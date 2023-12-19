@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1139644888113214889}
   - component: {fileID: 3076470389778549822}
   - component: {fileID: 5776203417567771201}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6820984343199429595}
   - component: {fileID: 6570034660119564372}
   - component: {fileID: 2943409628838596701}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 7643898423455880564}
   - component: {fileID: 107587197902736785}
   - component: {fileID: 5164957908344920686}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Left_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3978638434621014834}
   - component: {fileID: 737351867664065456}
   - component: {fileID: 8256383581374585004}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 8822392764468705573}
   - component: {fileID: 4758724153863549132}
   - component: {fileID: 3895074853830523140}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Right Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 5
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 7859515472125762553}
   - component: {fileID: 457303803473278686}
   - component: {fileID: 1280024590549790599}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Right_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 5
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 1936346952525426707}
   - component: {fileID: 2282545750171469296}
   - component: {fileID: 5690795636795098399}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Menu_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1327,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8180735483826134905}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Game_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1758412494707431382}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1404,9 @@ GameObject:
   - component: {fileID: 3957459765797717704}
   - component: {fileID: 4050686044933315238}
   - component: {fileID: 8579922186530269322}
-  m_Layer: 0
+  - component: {fileID: 5608414093436771302}
+  - component: {fileID: 9214944579477796876}
+  m_Layer: 12
   m_Name: Player_XR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,12 +1568,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 105380964293218615}
   m_TurnAmount: 45
-  m_DebounceTime: 0.5
+  m_DebounceTime: 0.2
   m_EnableTurnLeftRight: 1
   m_EnableTurnAround: 1
   m_DelayTime: 0
   m_TurnUsage: 0
-  m_Controllers: []
+  m_Controllers:
+  - {fileID: 7859515472125762553}
+  - {fileID: 3895074853830523140}
   m_DeadZone: 0.75
 --- !u!114 &4050686044933315238
 MonoBehaviour:
@@ -1595,6 +1599,7 @@ MonoBehaviour:
   m_InputBinding: 0
   m_Controllers:
   - {fileID: 7643898423455880564}
+  - {fileID: 5075111924678539489}
   m_DeadzoneMin: 0.125
   m_DeadzoneMax: 0.925
 --- !u!114 &8579922186530269322
@@ -1610,7 +1615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 105380964293218615}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 1.2
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -1640,6 +1645,48 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!54 &5608414093436771302
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361179431372546055}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!114 &9214944579477796876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361179431372546055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6ef54051221a14ca51234bbd9095a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
+  runSpeed: 2.2
+  movement: {fileID: 4050686044933315238}
 --- !u!1 &7841471433068364512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675666428175723453}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UI_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1684,7 +1731,7 @@ GameObject:
   - component: {fileID: 4483052089974882811}
   - component: {fileID: 4840789686825607595}
   - component: {fileID: 1561830149655461416}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1866,7 @@ GameObject:
   - component: {fileID: 3625208438271647894}
   - component: {fileID: 6344501660301754201}
   - component: {fileID: 8300145389909339681}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Resume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1954,7 +2001,7 @@ GameObject:
   - component: {fileID: 1431433644720966270}
   - component: {fileID: 5719135874235601409}
   - component: {fileID: 5075111924678539489}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Left Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2392,7 +2439,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
