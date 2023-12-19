@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class TeleportScript : MonoBehaviour
 {
-    public Transform player, destination;
-    public GameObject playerg;
+    public Transform destination;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerg.SetActive(false);
-            player.position = destination.position;
-            playerg.SetActive(true);
+            GameObject player = other.gameObject;
+            player.transform.position = destination.position;
         }
     }
 }
