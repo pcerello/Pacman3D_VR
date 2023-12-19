@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 7643898423455880564}
   - component: {fileID: 107587197902736785}
   - component: {fileID: 5164957908344920686}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Left_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 8822392764468705573}
   - component: {fileID: 4758724153863549132}
   - component: {fileID: 3895074853830523140}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 7859515472125762553}
   - component: {fileID: 457303803473278686}
   - component: {fileID: 1280024590549790599}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Right_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1327,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8180735483826134905}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Game_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,35 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21a7d053-a89e-4814-9ed7-b721a4800d38
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37d1c93f-af21-4716-9e01-e3d63b9d9461
+    m_ActionName: Player/Change
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9214944579477796876}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0d621921-19dd-4667-864f-43f96c0c38a8
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 283931c3-82e0-482e-8148-9f04e32480da
+    m_ActionName: Player/Run
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1615,7 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 105380964293218615}
-  m_MoveSpeed: 1.2
+  m_MoveSpeed: 1.5
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -1685,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.05
-  runSpeed: 2.2
+  runSpeed: 2.5
   movement: {fileID: 4050686044933315238}
 --- !u!1 &7841471433068364512
 GameObject:
@@ -1696,7 +1724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675666428175723453}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: UI_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2029,7 @@ GameObject:
   - component: {fileID: 1431433644720966270}
   - component: {fileID: 5719135874235601409}
   - component: {fileID: 5075111924678539489}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}

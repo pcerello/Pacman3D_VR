@@ -188,11 +188,22 @@
                 },
                 {
                     "name": "",
-                    "id": "522481f9-32a8-48ba-9862-d8ee1eb54cab",
-                    "path": "<OculusTouchController>/gripPressed",
+                    "id": "7a71bdd8-2fad-4458-9b13-3be3e95de242",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52e33ff5-146c-42ca-8561-787f3cba9d54",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false

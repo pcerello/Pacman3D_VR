@@ -32,17 +32,8 @@ public class PlayerMovement : MonoBehaviour
         _movement = value.Get<Vector2>();
     }
 
-    public void OnRun(InputAction.CallbackContext ctx)
+    public void OnRun()
     {
-        if (ctx.phase == InputActionPhase.Started)
-        {
-            movement.moveSpeed = runSpeed;
-        }
-        else if (ctx.phase == InputActionPhase.Canceled)
-        {
-            movement.moveSpeed = _initial_speed;
-        }
-        /**
         _is_running = !_is_running;
         if (_is_running)
         {
@@ -51,6 +42,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             movement.moveSpeed = _initial_speed;
-        }*/
+        }
     }
 }
