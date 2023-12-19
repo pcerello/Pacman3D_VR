@@ -1,5 +1,13 @@
 # Game Design Document
 
+# Membres
+- Von Euw Félix
+- Emilien Noyer
+- Decabrat Tanguy
+- Miqueu Eloya
+- Cerello Pauline
+- Pelet Antoine
+
 # Résumé : 
 
 Le but de ce projet est de réaliser un pacman 3D en réalité virtuelle. Nous contrôlons un personnage qui se déplace en première personne (le casque), qui doit ramasser des pièces afin de terminer le niveau. Cependant le joueur est coursé par des  fantômes avec des comportements différents qui le tue dès qu’il le touche. Un niveau se déroulerait sur plusieurs étages représentant accentuant l’aspect 3D de cette version de pacman.
