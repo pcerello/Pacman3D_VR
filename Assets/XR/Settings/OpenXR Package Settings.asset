@@ -301,7 +301,7 @@ MonoBehaviour:
   Values:
   - {fileID: 703397684131905265}
   - {fileID: 3471198463902868907}
-  - {fileID: -3764380017745274450}
+  - {fileID: 997336729109514113}
 --- !u!114 &137866227136677158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +417,21 @@ MonoBehaviour:
   priority: 0
   required: 0
   ignoreValidationErrors: 0
+--- !u!114 &997336729109514113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  features: []
+  m_renderMode: 1
+  m_depthSubmissionMode: 0
 --- !u!114 &1406789720230143710
 MonoBehaviour:
   m_ObjectHideFlags: 0
