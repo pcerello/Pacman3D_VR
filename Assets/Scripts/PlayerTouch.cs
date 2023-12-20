@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerTouch : MonoBehaviour
 {
+    [SerializeField] public int points;
+
+    void Start()
+    {
+        points = 0;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TPUp"))
@@ -16,6 +22,12 @@ public class PlayerTouch : MonoBehaviour
         {
             int id = other.GetComponentInParent<Elevator>().id;
             ScriptGameManager.SGM.DownStage(id);
+        }
+        else if (other.CompareTag("Coin"))
+        {
+            points += 1;
+            Destroy(other.gameObject);
+            print(points);
         }
     }
 }

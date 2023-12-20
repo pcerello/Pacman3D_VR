@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.05
+  runSpeed: 0
+  movement: {fileID: 0}
 --- !u!65 &731461314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -501,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350aed4945674d246a6c62102786392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 0
 --- !u!1 &1494759473
 GameObject:
   m_ObjectHideFlags: 0
