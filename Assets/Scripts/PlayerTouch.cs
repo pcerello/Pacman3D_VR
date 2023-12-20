@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerTouch : MonoBehaviour
 {
     [SerializeField] public int points;
+    [SerializeField] public TMP_Text scoreText;
 
     void Start()
     {
         points = 0;
+        scoreText.text = "Score : " + points.ToString();
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -27,7 +31,7 @@ public class PlayerTouch : MonoBehaviour
         {
             points += 1;
             Destroy(other.gameObject);
-            print(points);
+            scoreText.text = "Score : " + points.ToString();
         }
     }
 }
