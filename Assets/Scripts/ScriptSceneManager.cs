@@ -5,21 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class ScriptSceneManager : MonoBehaviour
 {
-    [SerializeField] private string[] listScenes;
+    [SerializeField] private GameObject[] listStages;
     private int currentStage = 0;
     private Vector3[] teleportPoints;
     [SerializeField] private int lenghtTps;
 
+
+
     void Awake()
     {
         teleportPoints = new Vector3[lenghtTps];
+        for (int i = 1; i < lenghtTps; i++)
+        {
+            listStages[i].SetActive(false);
+        }
     }
 
     public void UpStage(int Id, GameObject player)
     {
-        if (currentStage < listScenes.Length-1) {
+        if (currentStage < listStages.Length-1) {
             currentStage++;
-            StartCoroutine(asyncLoad(currentStage, currentStage - 1));
+            LoadUnloadStage(currentStage, currentStage - 1);
 
             player.transform.position = teleportPoints[Id];
         }
@@ -29,17 +35,16 @@ public class ScriptSceneManager : MonoBehaviour
     {
         if (currentStage > 0) {
             currentStage--;
-            StartCoroutine(asyncLoad(currentStage, currentStage + 1));
+            LoadUnloadStage(currentStage, currentStage + 1);
 
             player.transform.position = teleportPoints[Id];
         }
     }
 
-    private IEnumerator asyncLoad(int idLoad, int idUnload)
+    private void LoadUnloadStage(int idLoad, int idUnload)
     {
-        SceneManager.LoadSceneAsync(listScenes[idLoad], LoadSceneMode.Additive);
-        yield return new WaitForSeconds(.01f);
-        SceneManager.UnloadSceneAsync(listScenes[idUnload]);
+        listStages[idLoad].SetActive(true);
+        listStages[idUnload].SetActive(false); 
     }
 
     public void AddElevetor(int id, Vector3 pos)
