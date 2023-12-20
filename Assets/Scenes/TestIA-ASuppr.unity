@@ -530,15 +530,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390290767306146914, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7424617
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2390290767306146914, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37158462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2390290767306146914, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.233719
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2390290767306146914, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: m_LocalRotation.w
@@ -568,6 +568,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: mur
+      value: 
+      objectReference: {fileID: 5456369073777899493, guid: b54592cd66eba9047acdcd693e6ea8aa, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: sol
+      value: 
+      objectReference: {fileID: 5563655016251300473, guid: 52a21581dfdcc9d49b55b5ad0ee37b0d, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: tp_jaune
+      value: 
+      objectReference: {fileID: 7328797534872829064, guid: 5b38768d72ef98d429b152022acd4e71, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: tp_rouge
+      value: 
+      objectReference: {fileID: 3373841471027991447, guid: 6ee3fd9c815dacd409dab15bcbd67796, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: safe_zone
+      value: 
+      objectReference: {fileID: 3564423831929809518, guid: d11d27f542455d04cb60b6e026826254, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: tp_orange
+      value: 
+      objectReference: {fileID: 565139989382358217, guid: bf957612944753d49b16695f8b54bae8, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: tp_violet
+      value: 
+      objectReference: {fileID: 5530428580027271475, guid: 59b6cf4226f964f498a90e0d7bcbed06, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: spawn_ghost
+      value: 
+      objectReference: {fileID: 4753487490056900403, guid: 87d40f97df250e04abd504dadf5798b6, type: 3}
     - target: {fileID: 6195227406388816605, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: m_Name
       value: LabyrinthCreator
