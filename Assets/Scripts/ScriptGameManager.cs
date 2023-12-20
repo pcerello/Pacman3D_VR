@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ScriptGameManager : MonoBehaviour
@@ -8,8 +9,11 @@ public class ScriptGameManager : MonoBehaviour
     private int points;
     [SerializeField] private ScriptSceneManager ssm;
     [SerializeField] private GameObject player;
+    [SerializeField] public TMP_Text scoreText;
 
     public static ScriptGameManager SGM;
+
+    private int totalCoins;
 
     private void Awake()
     {
@@ -26,6 +30,21 @@ public class ScriptGameManager : MonoBehaviour
     void Start()
     {
         points = 0;
+        totalCoins = 0;
+
+        for (int i = 0; i < ssm.GetListParentStage().Length; i++)
+        {
+            totalCoins += ssm.GetListParentStage()[i].GetNbrCoins();
+        }
+        scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
+    }
+
+    public void CollectCoin(GameObject coin)
+    {
+        points += 1;
+        Destroy(coin.gameObject);
+        ssm.GetParentStage().LowerCoin();
+        scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
     }
 
     public ScriptSceneManager GetScriptSceneManager { get { return ssm; } }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ScriptSceneManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] listStages;
+    [SerializeField] private ParentStageScript[] listStages;
     private int currentStage = 0;
     private Vector3[] teleportPoints;
     [SerializeField] private int lenghtTps;
@@ -17,7 +17,7 @@ public class ScriptSceneManager : MonoBehaviour
         teleportPoints = new Vector3[lenghtTps];
         for (int i = 1; i < lenghtTps; i++)
         {
-            listStages[i].SetActive(false);
+            listStages[i].UnloadStage();
         }
     }
 
@@ -43,12 +43,22 @@ public class ScriptSceneManager : MonoBehaviour
 
     private void LoadUnloadStage(int idLoad, int idUnload)
     {
-        listStages[idLoad].SetActive(true);
-        listStages[idUnload].SetActive(false); 
+        listStages[idLoad].LoadStage();
+        listStages[idUnload].UnloadStage(); 
     }
 
     public void AddElevetor(int id, Vector3 pos)
     {
         teleportPoints[id] = pos;
+    }
+
+    public ParentStageScript GetParentStage()
+    {
+        return listStages[currentStage];
+    }
+
+    public ParentStageScript[] GetListParentStage()
+    {
+        return listStages;
     }
 }
