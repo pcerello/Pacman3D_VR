@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Unity.AI.Navigation;
+using UnityEditor;
 
 public class CreateLab : MonoBehaviour
 {
@@ -20,6 +22,12 @@ public class CreateLab : MonoBehaviour
     void Start()
     {
         ReadCSVFile();
+        GameObject ground = LocateOrCreateBlock("Grounds", true);
+        NavMeshSurface surface = ground.GetComponent<NavMeshSurface>();
+        surface.layerMask = LayerMask.GetMask("Default");
+
+        surface.AddData(); // Add the data of the environment
+        surface.BuildNavMesh(); // Build the area explorable by AIs
     }
 
     void ReadCSVFile()
@@ -44,12 +52,33 @@ public class CreateLab : MonoBehaviour
         // Afficher les données lues pour vérification
         foreach (string[] row in csvData)
         {
-            for(int i = 0; i<row.Length; i++)
+            for (int i = 0; i < row.Length; i++)
             {
                 SpawnObjLab(row, row_x, i);
             }
             row_x++;
         }
+    }
+    private GameObject LocateOrCreateBlock(string block_name, bool explorable)
+    {
+        GameObject explorableBlock = GameObject.Find(block_name);
+
+        // If ExplorableBlocks doesn't exist, create it
+        if (explorableBlock == null)
+        {
+            explorableBlock = new GameObject(block_name);
+            if (!explorable)
+            {
+                NavMeshModifier modifierN = explorableBlock.AddComponent<NavMeshModifier>();
+                modifierN.overrideArea = true;
+                modifierN.area = 1;
+            } else
+            {
+                explorableBlock.AddComponent<NavMeshSurface>();
+            }
+        }
+
+        return explorableBlock;
     }
 
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
@@ -58,39 +87,62 @@ public class CreateLab : MonoBehaviour
 
         switch (columns[col])
         {
-            //mur
+            // mur
             case "N":
-                GameObject n = Instantiate(mur, position * size, Quaternion.identity);
+                GameObject n = (GameObject) PrefabUtility.InstantiatePrefab(mur);
+                n.transform.position = position * size;
+                GameObject walls = LocateOrCreateBlock("Walls", explorable:false);
+                n.transform.parent = walls.transform; // Non explorable (wall)
                 break;
-            //sol
+            // sol
             case "W":
-                GameObject w = Instantiate(sol, position * size, Quaternion.identity);
+                GameObject w = (GameObject)PrefabUtility.InstantiatePrefab(sol);
+                w.transform.position = position * size;
+                GameObject ground = LocateOrCreateBlock("Grounds", explorable: true);
+                w.transform.parent = ground.transform; // Explorable (ground)
                 break;
-            //tp orange
+            // tp orange
             case "O":
-                GameObject o = Instantiate(tp_orange, position * size, Quaternion.identity);
+                GameObject o = (GameObject)PrefabUtility.InstantiatePrefab(tp_orange);
+                o.transform.position = position * size;
+                GameObject tpOrange = LocateOrCreateBlock("Teleporters", explorable: true);
+                o.transform.parent = tpOrange.transform; // Explorable (teleporter)
                 break;
-            //depart ghost   
+            // depart ghost
             case "C":
-                GameObject c = Instantiate(spawn_ghost, position * size, Quaternion.identity);
+                GameObject c = (GameObject)PrefabUtility.InstantiatePrefab(spawn_ghost);
+                c.transform.position = position * size;
+                GameObject monsterSpawns = LocateOrCreateBlock("MonsterSpawns", explorable: true);
+                c.transform.parent = monsterSpawns.transform; // Explorable (monster spawn)
                 break;
-            //safe zone
+            // safe zone
             case "G":
-                GameObject g = Instantiate(safe_zone, position * size, Quaternion.identity);
+                GameObject g = (GameObject)PrefabUtility.InstantiatePrefab(safe_zone);
+                g.transform.position = position * size;
+                GameObject safeZones = LocateOrCreateBlock("SafeZones", explorable: false);
+                g.transform.parent = safeZones.transform; // Non explorable (safe zone)
                 break;
-            //tp jaune
+            // tp jaune
             case "Y":
-                GameObject y = Instantiate(tp_jaune, position * size, Quaternion.identity);
+                GameObject y = (GameObject)PrefabUtility.InstantiatePrefab(tp_jaune);
+                y.transform.position = position * size;
+                GameObject tpJaune = LocateOrCreateBlock("Teleporters", explorable: true);
+                y.transform.parent = tpJaune.transform; // Explorable (teleporter)
                 break;
-            //tp rouge
+            // tp rouge
             case "R":
-                GameObject r = Instantiate(tp_rouge, position * size, Quaternion.identity);
+                GameObject r = (GameObject)PrefabUtility.InstantiatePrefab(tp_rouge);
+                r.transform.position = position * size;
+                GameObject tpRouge = LocateOrCreateBlock("Teleporters", explorable: true);
+                r.transform.parent = tpRouge.transform; // Explorable (teleporter)
                 break;
-            //tp violet
+            // tp violet
             case "P":
-                GameObject p = Instantiate(tp_violet, position * size, Quaternion.identity);
+                GameObject p = (GameObject)PrefabUtility.InstantiatePrefab(tp_violet);
+                p.transform.position = position * size;
+                GameObject tpViolet = LocateOrCreateBlock("Teleporters", explorable: true);
+                p.transform.parent = tpViolet.transform; // Explorable (teleporter)
                 break;
-            // Add more cases for other letters if needed
             default:
                 print("Not exist");
                 break;
