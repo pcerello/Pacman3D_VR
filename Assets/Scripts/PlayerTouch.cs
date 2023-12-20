@@ -6,15 +6,7 @@ using TMPro;
 
 public class PlayerTouch : MonoBehaviour
 {
-    [SerializeField] public int points;
-    [SerializeField] public TMP_Text scoreText;
 
-    void Start()
-    {
-        points = 0;
-        scoreText.text = "Score : " + points.ToString();
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TPUp"))
@@ -29,9 +21,7 @@ public class PlayerTouch : MonoBehaviour
         }
         else if (other.CompareTag("Coin"))
         {
-            points += 1;
-            Destroy(other.gameObject);
-            scoreText.text = "Score : " + points.ToString();
+            ScriptGameManager.SGM.CollectCoin(other.gameObject);
         }
     }
 }
