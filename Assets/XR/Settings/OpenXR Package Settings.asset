@@ -208,7 +208,6 @@ MonoBehaviour:
   features: []
   m_renderMode: 1
   m_depthSubmissionMode: 0
-  m_symmetricProjection: 0
 --- !u!114 &-1213376798190411275
 MonoBehaviour:
   m_ObjectHideFlags: 0
