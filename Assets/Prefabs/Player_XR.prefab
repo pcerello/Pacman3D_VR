@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1139644888113214889}
   - component: {fileID: 3076470389778549822}
   - component: {fileID: 5776203417567771201}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6820984343199429595}
   - component: {fileID: 6570034660119564372}
   - component: {fileID: 2943409628838596701}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -411,7 +411,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!1 &3784426845360332372
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3978638434621014834}
   - component: {fileID: 737351867664065456}
   - component: {fileID: 8256383581374585004}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 5
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 5
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
@@ -1184,7 +1184,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!1 &6310262599159708871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 1936346952525426707}
   - component: {fileID: 2282545750171469296}
   - component: {fileID: 5690795636795098399}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Menu_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1758412494707431382}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1404,9 @@ GameObject:
   - component: {fileID: 3957459765797717704}
   - component: {fileID: 4050686044933315238}
   - component: {fileID: 8579922186530269322}
-  m_Layer: 0
+  - component: {fileID: 5608414093436771302}
+  - component: {fileID: 9214944579477796876}
+  m_Layer: 12
   m_Name: Player_XR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1483,35 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21a7d053-a89e-4814-9ed7-b721a4800d38
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37d1c93f-af21-4716-9e01-e3d63b9d9461
+    m_ActionName: Player/Change
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9214944579477796876}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0d621921-19dd-4667-864f-43f96c0c38a8
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 283931c3-82e0-482e-8148-9f04e32480da
+    m_ActionName: Player/Run
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1566,12 +1596,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 105380964293218615}
   m_TurnAmount: 45
-  m_DebounceTime: 0.5
+  m_DebounceTime: 0.2
   m_EnableTurnLeftRight: 1
   m_EnableTurnAround: 1
   m_DelayTime: 0
   m_TurnUsage: 0
-  m_Controllers: []
+  m_Controllers:
+  - {fileID: 7859515472125762553}
+  - {fileID: 3895074853830523140}
   m_DeadZone: 0.75
 --- !u!114 &4050686044933315238
 MonoBehaviour:
@@ -1595,6 +1627,7 @@ MonoBehaviour:
   m_InputBinding: 0
   m_Controllers:
   - {fileID: 7643898423455880564}
+  - {fileID: 5075111924678539489}
   m_DeadzoneMin: 0.125
   m_DeadzoneMax: 0.925
 --- !u!114 &8579922186530269322
@@ -1610,7 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 105380964293218615}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 1.5
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -1640,6 +1673,48 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -8198699208435500284, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!54 &5608414093436771302
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361179431372546055}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!114 &9214944579477796876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361179431372546055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6ef54051221a14ca51234bbd9095a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
+  runSpeed: 2.5
+  movement: {fileID: 4050686044933315238}
 --- !u!1 &7841471433068364512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1759,7 @@ GameObject:
   - component: {fileID: 4483052089974882811}
   - component: {fileID: 4840789686825607595}
   - component: {fileID: 1561830149655461416}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1894,7 @@ GameObject:
   - component: {fileID: 3625208438271647894}
   - component: {fileID: 6344501660301754201}
   - component: {fileID: 8300145389909339681}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Resume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2222,7 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.005
+  m_LineWidth: 0.01
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_AutoAdjustLineLength: 0
@@ -2287,8 +2362,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 1}
+    key0: {r: 0.018076181, g: 1, b: 0, a: 1}
+    key1: {r: 1, g: 0.94154495, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2312,13 +2387,13 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_BlockedColorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    key1: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    key1: {r: 1, g: 0.02512573, b: 0.015686274, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2342,7 +2417,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_TreatSelectionAsValidState: 0
@@ -2392,7 +2467,7 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
+  m_SelectUsage: 2
   m_ActivateUsage: 2
   m_UIPressUsage: 2
   m_AxisToPressThreshold: 0.1
