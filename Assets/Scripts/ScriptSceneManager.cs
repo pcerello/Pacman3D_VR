@@ -57,6 +57,11 @@ public class ScriptSceneManager : MonoBehaviour
         return listStages[currentStage];
     }
 
+    public ParentStageScript GetParentStage(int id)
+    {
+        return listStages[id];
+    }
+
     public ParentStageScript[] GetListParentStage()
     {
         return listStages;
@@ -65,5 +70,10 @@ public class ScriptSceneManager : MonoBehaviour
     public List<GameObject> GetListCoins()
     {
         return listStages[currentStage].GetListCoins();
+    }
+
+    public int GetNbrCoinsInStage(int id)
+    {
+        return listStages[id].GetNbrCoins();
     }
 }
