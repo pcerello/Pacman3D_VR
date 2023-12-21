@@ -61,4 +61,9 @@ public class ScriptSceneManager : MonoBehaviour
     {
         return listStages;
     }
+
+    public List<GameObject> GetListCoins()
+    {
+        return listStages[currentStage].GetListCoins();
+    }
 }

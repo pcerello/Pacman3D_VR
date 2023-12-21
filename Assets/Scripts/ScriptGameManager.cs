@@ -42,9 +42,11 @@ public class ScriptGameManager : MonoBehaviour
     public void CollectCoin(GameObject coin)
     {
         points += 1;
+        ssm.GetListCoins().Remove(coin);
         Destroy(coin.gameObject);
         ssm.GetParentStage().LowerCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
+        
     }
 
     public ScriptSceneManager GetScriptSceneManager { get { return ssm; } }
