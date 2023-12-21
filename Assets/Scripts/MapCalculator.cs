@@ -2,30 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using TMPro;
-using Unity.AI.Navigation;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class MapCalculator : MonoBehaviour
 {
-    [SerializeField] public string filePath;
+    [SerializeField] public int stageNumber;
     [SerializeField] public Canvas canvas;
     [SerializeField] public GameObject wall;
     private float rate = (float)0.125;
     private GameObject MapPlayer;
-    private List<GameObject> MapAIs = new List<GameObject>();
-    private List<GameObject> MapCoins = new List<GameObject>();
+    private Dictionary<GameObject, GameObject> MapAIs = new Dictionary<GameObject, GameObject>();
+    private List<GameObject> MapCoins = new List<GameObject>(); // TODO : Lier aux coins pour les suppr ou etc
 
     void Start()
     {
         ReadCSVFile();
         LocatePlayerAndAIS();
-        foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins())
+        foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber-1))
         {
             makeTile("MapCoin", coin.transform.position, wall.transform.position, (float)17 / 18, (float)0.475, (float)0.949);
         }
@@ -35,23 +28,23 @@ public class MapCalculator : MonoBehaviour
     {
         updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, wall.transform.position);
 
-        GameObject AI1 = GameObject.Find("PlayerRandomIA");// TODO : Replace FINDs by a getter in SGM
-        GameObject AI2 = GameObject.Find("PlayerLinearIA");// TODO : Replace FINDs by a getter in SGM
-
-
-        updateTile(MapAIs[0], AI1.transform.position, wall.transform.position);
-        updateTile(MapAIs[1], AI2.transform.position, wall.transform.position);
-
+        foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
+        {
+            GameObject AI = pair.Key;
+            GameObject mapAI = pair.Value;
+            updateTile(mapAI, AI.transform.position, wall.transform.position);
+        }
     }
 
     void LocatePlayerAndAIS()
     {
-        GameObject AI1 = GameObject.Find("PlayerRandomIA");// TODO : Replace FINDs by a getter in SGM
-        GameObject AI2 = GameObject.Find("PlayerLinearIA");// TODO : Replace FINDs by a getter in SGM
+        List<GameObject> AIs = ScriptGameManager.SGM.GetListIAsStage(stageNumber-1);
+        for (int i = 0; i < ScriptGameManager.SGM.GetListIAsStage(stageNumber-1).Count; i++)
+        {
+            MapAIs[AIs[i]] = makeTileFromCSV("MapAI"+i, AIs[i].transform.position, (float)0.8, 1, 1);
+        }
 
         MapPlayer = makeTileFromCSV("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position, 0, 1, 1);
-        MapAIs.Add(makeTileFromCSV("MapAI1", AI1.transform.position, (float)0.8, 1, 1));
-        MapAIs.Add(makeTileFromCSV("MapAI2", AI2.transform.position, (float)0.9, 1, 1));
     }
 
     void ReadCSVFile()
@@ -60,7 +53,7 @@ public class MapCalculator : MonoBehaviour
         List<string[]> csvData = new List<string[]>();
 
         // Lire le fichier CSV ligne par ligne
-        using (StreamReader reader = new StreamReader(filePath))
+        using (StreamReader reader = new StreamReader("Assets/CSV/etage"+stageNumber+".csv"))
         {
             while (!reader.EndOfStream)
             {
@@ -83,29 +76,6 @@ public class MapCalculator : MonoBehaviour
             }
             row_x++;
         }
-    }
-
-    private GameObject LocateOrCreateBlock(string block_name, bool explorable)
-    {
-        GameObject explorableBlock = GameObject.Find(block_name);
-
-        // If ExplorableBlocks doesn't exist, create it
-        if (explorableBlock == null)
-        {
-            explorableBlock = new GameObject(block_name);
-            if (!explorable)
-            {
-                NavMeshModifier modifierN = explorableBlock.AddComponent<NavMeshModifier>();
-                modifierN.overrideArea = true;
-                modifierN.area = 1;
-            }
-            else
-            {
-                explorableBlock.AddComponent<NavMeshSurface>();
-            }
-        }
-
-        return explorableBlock;
     }
 
     private GameObject makeTileFromCSV(string tileName, Vector3 position, float H, float S, float V)

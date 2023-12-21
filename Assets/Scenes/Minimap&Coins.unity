@@ -175,11 +175,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9020957294566107035, guid: 383381be2fd9c934ca355f9c79ec15cf, type: 3}
+      propertyPath: Targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 1766603239}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 383381be2fd9c934ca355f9c79ec15cf, type: 3}
+--- !u!1 &43086082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7353675647906450181, guid: 383381be2fd9c934ca355f9c79ec15cf, type: 3}
+  m_PrefabInstance: {fileID: 43086081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &178609984
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee968fbc25a2a3b4391ad170694ea19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: Assets/CSV/etage1.csv
+  stageNumber: 1
   canvas: {fileID: 514344324}
   wall: {fileID: 653927048}
 --- !u!114 &514344322
@@ -587,9 +596,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentGrounds: {fileID: 2089128055}
+  parentIAs: {fileID: 1231394733}
   nbrCoins: 69
   coins: {fileID: 736225571521372545, guid: ee54c5e8f08978b44b970d055d33eb2a, type: 3}
   stage: {fileID: 1703987896}
+  pathCsv: Assets/CSV/etage2.csv
 --- !u!4 &535620230
 Transform:
   m_ObjectHideFlags: 0
@@ -913,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee968fbc25a2a3b4391ad170694ea19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: Assets/CSV/etage2.csv
+  stageNumber: 2
   canvas: {fileID: 1068643073}
   wall: {fileID: 1756519536}
 --- !u!114 &1068643071
@@ -1052,6 +1063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2769155672205676906, guid: 37e7209adc3c4c84ba463cf61d50d484, type: 3}
+      propertyPath: Targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 1766603239}
     - target: {fileID: 3049593499963454793, guid: 37e7209adc3c4c84ba463cf61d50d484, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.690166
@@ -1096,11 +1111,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage_2
       objectReference: {fileID: 0}
+    - target: {fileID: 9016478344342957792, guid: 37e7209adc3c4c84ba463cf61d50d484, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37e7209adc3c4c84ba463cf61d50d484, type: 3}
+--- !u!1 &1231394733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1453205725360086343, guid: 37e7209adc3c4c84ba463cf61d50d484, type: 3}
+  m_PrefabInstance: {fileID: 1231394732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258503747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,9 +1155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentGrounds: {fileID: 825117663}
+  parentIAs: {fileID: 43086082}
   nbrCoins: 69
   coins: {fileID: 736225571521372545, guid: ee54c5e8f08978b44b970d055d33eb2a, type: 3}
   stage: {fileID: 1821014854}
+  pathCsv: Assets/CSV/etage1.csv
 --- !u!4 &1258503749
 Transform:
   m_ObjectHideFlags: 0
