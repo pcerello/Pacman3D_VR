@@ -151,6 +151,13 @@ public class CreateLab : MonoBehaviour
                 GameObject tpViolet = LocateOrCreateBlock("Teleporters", explorable: true);
                 p.transform.parent = tpViolet.transform; // Explorable (teleporter)
                 break;
+            // case anti spawn
+            case "A":
+                GameObject a = (GameObject)PrefabUtility.InstantiatePrefab(sol);
+                a.transform.position = position * size;
+                GameObject antiSpawn = LocateOrCreateBlock("SafeZones", explorable: true);
+                a.transform.parent = antiSpawn.transform; // Explorable (Anti Spawn de coins)
+                break;
             default:
                 print("Not exist");
                 break;

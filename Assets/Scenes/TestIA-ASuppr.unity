@@ -496,8 +496,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee968fbc25a2a3b4391ad170694ea19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: Assets/CSV/etage3.csv
+  stageNumber: 0
   canvas: {fileID: 1977005720}
+  wall: {fileID: 0}
 --- !u!114 &1977005718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +817,10 @@ PrefabInstance:
       propertyPath: tp_violet
       value: 
       objectReference: {fileID: 5530428580027271475, guid: 59b6cf4226f964f498a90e0d7bcbed06, type: 3}
+    - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
+      propertyPath: csvFilePath
+      value: Assets/CSV/etage1.csv
+      objectReference: {fileID: 0}
     - target: {fileID: 4614930886902597872, guid: dd0f3a1aeb6492b4e982b9b7e7fc8ada, type: 3}
       propertyPath: spawn_ghost
       value: 
