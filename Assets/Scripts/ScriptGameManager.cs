@@ -79,4 +79,9 @@ public class ScriptGameManager : MonoBehaviour
     {
         ssm.AddElevetor(id, pos);
     }
+
+    public List<GameObject> GetListCoins() 
+    { 
+        return ssm.GetListCoins();
+    }
 }
