@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -250,9 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentGrounds: {fileID: 424730742}
+  parentIAs: {fileID: 0}
   nbrCoins: 2
   coins: {fileID: 736225571521372545, guid: ee54c5e8f08978b44b970d055d33eb2a, type: 3}
   stage: {fileID: 1227481873}
+  pathCsv: 
 --- !u!4 &309220697
 Transform:
   m_ObjectHideFlags: 0
@@ -262,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 309220695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.84, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1075,9 +1077,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentGrounds: {fileID: 205688197}
+  parentIAs: {fileID: 0}
   nbrCoins: 1
   coins: {fileID: 736225571521372545, guid: ee54c5e8f08978b44b970d055d33eb2a, type: 3}
   stage: {fileID: 1909123844}
+  pathCsv: 
 --- !u!4 &1796642151
 Transform:
   m_ObjectHideFlags: 0

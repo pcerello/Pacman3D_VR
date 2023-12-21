@@ -2,23 +2,22 @@ from bs4 import BeautifulSoup
 import csv
 import os
 
-for etage in range(1, 7):
+def rotate_matrix_left(matrix):
+    # Step 1: Transpose the matrix
+    transposed_matrix = [list(row) for row in zip(*matrix)]
+    
+    # Step 2: Reverse the order of the columns
+    rotated_matrix = [row[::-1] for row in transposed_matrix]
+    
+    return rotated_matrix
 
-    with open(f'./stages_html/Etage {etage}.html', 'r') as f:
+for etage in range(1, len(os.listdir('./stages_html'))+1):
+    file = f'./stages_html/Etage {etage}.html'
+    if (etage == 12):
+        file = f'./stages_html/Etage Bonus.html'
+    with open(file) as f:
         html_content = f.read()
     f.close()
-
-    from bs4 import BeautifulSoup
-    import csv
-
-    def rotate_matrix_left(matrix):
-        # Step 1: Transpose the matrix
-        transposed_matrix = [list(row) for row in zip(*matrix)]
-        
-        # Step 2: Reverse the order of the columns
-        rotated_matrix = [row[::-1] for row in transposed_matrix]
-        
-        return rotated_matrix
 
     # Parse the HTML content
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -50,6 +49,8 @@ for etage in range(1, 7):
                 elif color_class == 's7':
                     row_data.append('R')
                 elif color_class == 's8':
+                    row_data.append('A')
+                elif color_class == 's9':
                     row_data.append('???')
                 else:
                     row_data.append('W')
