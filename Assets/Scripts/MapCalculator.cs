@@ -28,25 +28,23 @@ public class MapCalculator : MonoBehaviour
 
     private void Update()
     {
+        updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, wall.transform.position);
 
-        updateTile(MapPlayer, player.transform.position, wall.transform.position);
-        foreach (GameObject t in MapAIs)
-        {
-            updateTile(t,);
-        }
+        GameObject AI1 = GameObject.Find("PlayerRandomIA");// TODO : Replace FINDs by a getter in SGM
+        GameObject AI2 = GameObject.Find("PlayerLinearIA");// TODO : Replace FINDs by a getter in SGM
 
-        updateTile("MapAI1", AI1.transform.position, wall.transform.position);
-        updateTile("MapAI2", AI2.transform.position, wall.transform.position);
+
+        updateTile(MapAIs[0], AI1.transform.position, wall.transform.position);
+        updateTile(MapAIs[1], AI2.transform.position, wall.transform.position);
 
     }
 
     void LocatePlayerAndAIS()
     {
-        GameObject player = GameObject.Find("Player");
-        GameObject AI1 = GameObject.Find("PlayerRandomIA");
-        GameObject AI2 = GameObject.Find("PlayerLinearIA");
+        GameObject AI1 = GameObject.Find("PlayerRandomIA");// TODO : Replace FINDs by a getter in SGM
+        GameObject AI2 = GameObject.Find("PlayerLinearIA");// TODO : Replace FINDs by a getter in SGM
 
-        MapPlayer = makeTile("MapPlayer", player.transform.position, 0, 1, 1);
+        MapPlayer = makeTile("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position, 0, 1, 1);
         MapAIs.Add(makeTile("MapAI1", AI1.transform.position, (float)0.8, 1, 1));
         MapAIs.Add(makeTile("MapAI2", AI2.transform.position, (float)0.9, 1, 1));
     }
@@ -121,7 +119,7 @@ public class MapCalculator : MonoBehaviour
         canvasPos = canvasPos - new Vector3((wh.x+rate)/2-rate, (wh.y+rate)/2-rate);
         tile.transform.position = canvasPos + rate * position;
         tile.transform.SetParent(canvas.transform);
-        tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);*
+        tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
 
 
         return tile;
