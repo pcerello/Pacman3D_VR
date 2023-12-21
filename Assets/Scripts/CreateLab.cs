@@ -49,6 +49,7 @@ public class CreateLab : MonoBehaviour
         }
 
         int row_x = 0;
+        csvData.Reverse();
         // Afficher les données lues pour vérification
         foreach (string[] row in csvData)
         {
