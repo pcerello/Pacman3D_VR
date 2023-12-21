@@ -12,10 +12,12 @@ public class ParentStageScript : MonoBehaviour
     [SerializeField] private GameObject stage;
 
     private List<GameObject> listGrounds;
+    private List<GameObject> listCoins;
 
     void Awake()
     {
         listGrounds = new List<GameObject>();
+        listCoins = new List<GameObject>();
         int length = parentGrounds.transform.childCount;
         for (int i = 0; i < length; i++)
         {
@@ -34,6 +36,12 @@ public class ParentStageScript : MonoBehaviour
         GameObject o = Instantiate(coins, listGrounds[randIndex].transform.position, Quaternion.identity);
         o.transform.SetParent(listGrounds[randIndex].transform);
         listGrounds.Remove(listGrounds[randIndex]);
+        listCoins.Add(o);
+    }
+
+    public List<GameObject> GetListCoins()
+    {
+        return listCoins;
     }
 
     public int GetNbrCoins()
