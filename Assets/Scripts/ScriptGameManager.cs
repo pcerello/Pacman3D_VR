@@ -51,7 +51,6 @@ public class ScriptGameManager : MonoBehaviour
         points += 1;
         ssm.GetListCoins().Remove(coin);
         Destroy(coin.gameObject);
-        ssm.GetParentStage().LowerCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
 
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
@@ -93,5 +92,20 @@ public class ScriptGameManager : MonoBehaviour
     public Transform GetTransformPlayer()
     {
         return player.transform;
+    }
+
+    public List<GameObject> GetListIAsStage()
+    {
+        return ssm.GetListIAs();
+    }
+
+    public List<GameObject> GetListIAsStage(int id)
+    {
+        return ssm.GetListIAs(id);
+    }
+
+    public int GetNbrIAsInStage(int id)
+    {
+        return ssm.GetNbrIAsInStage(id);
     }
 }

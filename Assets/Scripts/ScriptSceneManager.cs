@@ -10,8 +10,6 @@ public class ScriptSceneManager : MonoBehaviour
     private Vector3[] teleportPoints;
     [SerializeField] private int lenghtTps;
 
-
-
     void Awake()
     {
         teleportPoints = new Vector3[lenghtTps];
@@ -80,5 +78,20 @@ public class ScriptSceneManager : MonoBehaviour
     public int GetCurrentStage()
     {
         return currentStage;
+    }
+
+    public List<GameObject> GetListIAs()
+    {
+        return listStages[currentStage].GetListIAs();
+    }
+
+    public List<GameObject> GetListIAs(int id)
+    {
+        return listStages[id].GetListIAs();
+    }
+
+    public int GetNbrIAsInStage(int id)
+    {
+        return listStages[id].GetNbrIAs();
     }
 }

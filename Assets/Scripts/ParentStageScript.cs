@@ -7,22 +7,30 @@ using UnityEngine;
 public class ParentStageScript : MonoBehaviour
 {
     [SerializeField] private GameObject parentGrounds;
+    [SerializeField] private GameObject parentIAs;
     [SerializeField] public int nbrCoins;
     [SerializeField] private GameObject coins;
     [SerializeField] private GameObject stage;
+    [SerializeField] private string pathCsv;
 
     private List<GameObject> listGrounds;
+    private List<GameObject> listIAs;
     private List<GameObject> listCoins;
-    private ScripTableMap map;
 
     void Awake()
     {
         listGrounds = new List<GameObject>();
+        listIAs = new List<GameObject>();
         listCoins = new List<GameObject>();
         int length = parentGrounds.transform.childCount;
         for (int i = 0; i < length; i++)
         {
             listGrounds.Add(parentGrounds.transform.GetChild(i).gameObject);
+        }
+        length = parentIAs.transform.childCount;
+        for (int i = 0; i < length; i++)
+        {
+            listIAs.Add(parentIAs.transform.GetChild(i).gameObject);
         }
 
         for (int i = 0;i < nbrCoins; i++)
@@ -47,12 +55,7 @@ public class ParentStageScript : MonoBehaviour
 
     public int GetNbrCoins()
     {
-        return nbrCoins;
-    }
-
-    public void LowerCoin()
-    {
-        nbrCoins -= 1;
+        return listCoins.Count;
     }
 
     public void UnloadStage()
@@ -63,5 +66,20 @@ public class ParentStageScript : MonoBehaviour
     public void LoadStage()
     {
         stage.SetActive(true);
+    }
+
+    public string GetPathCsv()
+    {
+        return pathCsv;
+    }
+
+    public List<GameObject> GetListIAs()
+    {
+        return listIAs;
+    }
+
+    public int GetNbrIAs()
+    {
+        return listIAs.Count;
     }
 }
