@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -37,6 +38,10 @@ public class ScriptGameManager : MonoBehaviour
             totalCoins += ssm.GetListParentStage()[i].GetNbrCoins();
         }
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
+        for (int i = 0; i < ssm.GetListParentStage().Length; i++)
+        {
+            scoreText.text += "\nEtage "+ (i+1).ToString() + " : " + ssm.GetParentStage(i).GetNbrCoins().ToString() + " coins left";
+        }
     }
 
     public void CollectCoin(GameObject coin)
@@ -46,7 +51,11 @@ public class ScriptGameManager : MonoBehaviour
         Destroy(coin.gameObject);
         ssm.GetParentStage().LowerCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
-        
+        for (int i = 0; i < ssm.GetListParentStage().Length; i++)
+        {
+            scoreText.text += "\nEtage " + (i + 1).ToString() + " : " + ssm.GetNbrCoinsInStage(i).ToString() + " coins left";
+        }
+
     }
 
     public ScriptSceneManager GetScriptSceneManager { get { return ssm; } }
