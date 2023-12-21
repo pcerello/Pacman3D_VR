@@ -19,8 +19,13 @@ public class CreateLab : MonoBehaviour
     [SerializeField] private GameObject spawn_ghost;
     [SerializeField] private GameObject safe_zone;
 
+    private GameObject stageParent;
+
     void Start()
     {
+        stageParent = new GameObject();
+        stageParent.name = "Stage";
+        stageParent.transform.position = Vector3.zero;
         ReadCSVFile();
         GameObject ground = LocateOrCreateBlock("Grounds", true);
         NavMeshSurface surface = ground.GetComponent<NavMeshSurface>();
@@ -49,6 +54,7 @@ public class CreateLab : MonoBehaviour
         }
 
         int row_x = 0;
+        csvData.Reverse();
         // Afficher les données lues pour vérification
         foreach (string[] row in csvData)
         {
@@ -61,12 +67,14 @@ public class CreateLab : MonoBehaviour
     }
     private GameObject LocateOrCreateBlock(string block_name, bool explorable)
     {
-        GameObject explorableBlock = GameObject.Find(block_name);
+        GameObject explorableBlock = GameObject.Find(block_name);//TODO : Replace with dictionnary and reference -> faster
 
         // If ExplorableBlocks doesn't exist, create it
         if (explorableBlock == null)
         {
             explorableBlock = new GameObject(block_name);
+            explorableBlock.transform.SetParent(stageParent.transform);
+            explorableBlock.transform.position = Vector3.zero;
             if (!explorable)
             {
                 NavMeshModifier modifierN = explorableBlock.AddComponent<NavMeshModifier>();
