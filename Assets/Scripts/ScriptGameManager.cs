@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditorInternal.VersionControl.ListControl;
 
 public class ScriptGameManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class ScriptGameManager : MonoBehaviour
     [SerializeField] private ScriptSceneManager ssm;
     [SerializeField] private GameObject player;
     [SerializeField] public TMP_Text scoreText;
+    [SerializeField] private ScripTableMap tableMap;
 
     public static ScriptGameManager SGM;
 
@@ -35,13 +38,12 @@ public class ScriptGameManager : MonoBehaviour
 
         for (int i = 0; i < ssm.GetListParentStage().Length; i++)
         {
-            totalCoins += ssm.GetListParentStage()[i].GetNbrCoins();
+            int coins = ssm.GetNbrCoinsInStage(i);
+            totalCoins += coins;
+            tableMap.CreateLine(i, coins);
         }
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
-        for (int i = 0; i < ssm.GetListParentStage().Length; i++)
-        {
-            scoreText.text += "\nEtage "+ (i+1).ToString() + " : " + ssm.GetParentStage(i).GetNbrCoins().ToString() + " coins left";
-        }
+
     }
 
     public void CollectCoin(GameObject coin)
@@ -51,10 +53,8 @@ public class ScriptGameManager : MonoBehaviour
         Destroy(coin.gameObject);
         ssm.GetParentStage().LowerCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
-        for (int i = 0; i < ssm.GetListParentStage().Length; i++)
-        {
-            scoreText.text += "\nEtage " + (i + 1).ToString() + " : " + ssm.GetNbrCoinsInStage(i).ToString() + " coins left";
-        }
+
+        tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
 
     }
 
@@ -83,5 +83,15 @@ public class ScriptGameManager : MonoBehaviour
     public List<GameObject> GetListCoins() 
     { 
         return ssm.GetListCoins();
+    }
+
+    public int GetNumberParentStage()
+    {
+        return ssm.GetListParentStage().Length;
+    }
+
+    public Transform GetTransformPlayer()
+    {
+        return player.transform;
     }
 }

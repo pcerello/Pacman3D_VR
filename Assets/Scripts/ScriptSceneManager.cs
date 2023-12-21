@@ -76,4 +76,9 @@ public class ScriptSceneManager : MonoBehaviour
     {
         return listStages[id].GetNbrCoins();
     }
+
+    public int GetCurrentStage()
+    {
+        return currentStage;
+    }
 }
