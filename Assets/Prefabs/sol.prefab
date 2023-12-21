@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3108328430342536596}
   - component: {fileID: 6031149926307456101}
   - component: {fileID: 7150630601586694539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8950800362167186230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

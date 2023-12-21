@@ -7,6 +7,7 @@ using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -14,9 +15,10 @@ public class MapCalculator : MonoBehaviour
 {
     [SerializeField] public string filePath;
     [SerializeField] public Canvas canvas;
-    private int size = 1;
+    [SerializeField] public GameObject wall;
     private float rate = (float)0.125;
-    private 
+    private GameObject MapPlayer;
+    private List<GameObject> MapAIs = new List<GameObject>();
 
     void Start()
     {
@@ -26,13 +28,15 @@ public class MapCalculator : MonoBehaviour
 
     private void Update()
     {
-        GameObject player = GameObject.Find("Player");
-        GameObject AI1 = GameObject.Find("PlayerRandomIA");
-        GameObject AI2 = GameObject.Find("PlayerLinearIA");
 
-        updateTile("MapPlayer", player.transform.position);
-        updateTile("MapAI1", AI1.transform.position);
-        updateTile("MapAI2", AI2.transform.position);
+        updateTile(MapPlayer, player.transform.position, wall.transform.position);
+        foreach (GameObject t in MapAIs)
+        {
+            updateTile(t,);
+        }
+
+        updateTile("MapAI1", AI1.transform.position, wall.transform.position);
+        updateTile("MapAI2", AI2.transform.position, wall.transform.position);
 
     }
 
@@ -42,9 +46,9 @@ public class MapCalculator : MonoBehaviour
         GameObject AI1 = GameObject.Find("PlayerRandomIA");
         GameObject AI2 = GameObject.Find("PlayerLinearIA");
 
-        makeTile("MapPlayer", player.transform.position, 0, 1, 1);
-        makeTile("MapAI1", AI1.transform.position, (float)0.8, 1, 1);
-        makeTile("MapAI2", AI2.transform.position, (float)0.9, 1, 1);
+        MapPlayer = makeTile("MapPlayer", player.transform.position, 0, 1, 1);
+        MapAIs.Add(makeTile("MapAI1", AI1.transform.position, (float)0.8, 1, 1));
+        MapAIs.Add(makeTile("MapAI2", AI2.transform.position, (float)0.9, 1, 1));
     }
 
     void ReadCSVFile()
@@ -101,7 +105,7 @@ public class MapCalculator : MonoBehaviour
         return explorableBlock;
     }
 
-    private void makeTile(string tileName, Vector3 position, float H, float S, float V)
+    private GameObject makeTile(string tileName, Vector3 position, float H, float S, float V)
     {
         GameObject tile = new GameObject(tileName);
         UnityEngine.UI.Image tileImage = tile.AddComponent<UnityEngine.UI.Image>();
@@ -117,19 +121,24 @@ public class MapCalculator : MonoBehaviour
         canvasPos = canvasPos - new Vector3((wh.x+rate)/2-rate, (wh.y+rate)/2-rate);
         tile.transform.position = canvasPos + rate * position;
         tile.transform.SetParent(canvas.transform);
-        tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
-    }
+        tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);*
 
-    private void updateTile(string tileName, Vector3 position)
+
+        return tile;
+    }
+    private void updateTile(GameObject tile, Vector3 playerPosition, Vector3 mapPosition)
     {
-        GameObject tile = GameObject.Find(tileName);
-        position.y = position.z;
-        position.z = 0;
+
+        Vector3 localPosition = playerPosition - mapPosition;
+        localPosition.y = localPosition.z;
+        localPosition.z = 0;
 
         Vector3 canvasPos = canvas.transform.position;
         Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
+
         canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
-        tile.transform.position = canvasPos + rate * (position/3);
+
+        tile.transform.position = canvasPos + rate * (localPosition / 3);
     }
 
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
