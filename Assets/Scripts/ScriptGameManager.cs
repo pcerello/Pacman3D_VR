@@ -89,4 +89,9 @@ public class ScriptGameManager : MonoBehaviour
     {
         return ssm.GetListParentStage().Length;
     }
+
+    public Transform GetTransformPlayer()
+    {
+        return player.transform;
+    }
 }
