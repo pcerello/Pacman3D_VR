@@ -8,6 +8,27 @@
 - Cerello Pauline
 - Pelet Antoine
 
+# Répartition des taches :
+- Création de niveaux (Design) : Emilien (35%), Antoine (35%), Pauline (30%)
+- Création des niveaux (Dev) : Antoine + Pauline (Fail 100%), Tanguy (Réussite 70%), Félix (Réussite 30%)
+- IA : Tanguy (95%), Emilien (4%), Felix (1%)
+- Téléporteurs (inter-étage) : Emilien (90%), Félix (10%)
+- Téléporteurs (entre-étages) : Emilien (40%), Félix (55%), Tanguy (5%)
+- Pièces : Emilien (55%), Félix (45%)
+- Modèles 3D : Eloya (60%), Antoine + Pauline (40%)
+- Player (VR + Script) : Félix (100%)
+- Minimap : Tanguy (100%)
+- Résumé étages : Emilien (50%), Félix (50%)
+- Menu : Félix (100%)
+- Fix merge conflicts : Tanguy (60%), Félix (30%), Emilien (10%)
+
+# Outils utilisés :
+- Unity 3D (moteur de jeu)
+- Blender (modélisation 3D)
+- Krita (dessins 2D)
+- Pixabay (site de musique)
+- Google Sheet (design niveaux)
+
 # Résumé : 
 
 Le but de ce projet est de réaliser un pacman 3D en réalité virtuelle. Nous contrôlons un personnage qui se déplace en première personne (le casque), qui doit ramasser des pièces afin de terminer le niveau. Cependant le joueur est coursé par des  fantômes avec des comportements différents qui le tue dès qu’il le touche. Un niveau se déroulerait sur plusieurs étages représentant accentuant l’aspect 3D de cette version de pacman.
