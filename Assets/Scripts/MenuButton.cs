@@ -8,6 +8,8 @@ public class MenuButton : MonoBehaviour
 {
 
     [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject firstMenu;
+    [SerializeField] private GameObject secondMenu;
 
     private bool _pause = false;
 
@@ -17,6 +19,24 @@ public class MenuButton : MonoBehaviour
         {
             canvas.SetActive(false);
         }
+        if(secondMenu != null && firstMenu != null)
+        {
+            firstMenu.SetActive(true);
+            secondMenu.SetActive(false);
+        }
+
+    }
+
+    public void SelectLevel()
+    {
+        firstMenu.SetActive(false);
+        secondMenu.SetActive(true);
+    }
+
+    public void UnSelectLevel()
+    {
+        secondMenu.SetActive(false);
+        firstMenu.SetActive(true);
     }
 
     public void PlayLevel(int id)
