@@ -13,6 +13,7 @@ public class ParentStageScript : MonoBehaviour
 
     private List<GameObject> listGrounds;
     private List<GameObject> listCoins;
+    private ScripTableMap map;
 
     void Awake()
     {
