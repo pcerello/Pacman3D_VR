@@ -4,7 +4,6 @@ using UnityEngine;
 using System.IO;
 using Unity.AI.Navigation;
 using UnityEditor;
-using System.Diagnostics.Tracing;
 
 public class CreateLab : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class CreateLab : MonoBehaviour
     private GameObject teleporters;
     private GameObject monsterspawns;
     private GameObject safezones;
-
+#if UNITY_STANDALONE_WIN
     void Start()
     {
         stageParent = new GameObject();
@@ -156,5 +155,7 @@ public class CreateLab : MonoBehaviour
             creation.transform.position = position * size;
             creation.transform.localScale = Vector3.one * size;
         }
+
     }
+#endif
 }

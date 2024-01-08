@@ -1406,9 +1406,10 @@ GameObject:
   - component: {fileID: 8579922186530269322}
   - component: {fileID: 5608414093436771302}
   - component: {fileID: 9214944579477796876}
+  - component: {fileID: 4999476722155064855}
   m_Layer: 12
   m_Name: Player_XR
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1458,7 +1459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionAssets: []
+  m_ActionAssets:
+  - {fileID: -944628639613478452, guid: 021b9e0968fd6e9489ed4aee6a2c24f1, type: 3}
 --- !u!114 &36277837209755236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,7 +1553,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -1568,6 +1570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1349298282196961999}
+  firstMenu: {fileID: 0}
+  secondMenu: {fileID: 0}
 --- !u!114 &105380964293218615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,6 +1719,18 @@ MonoBehaviour:
   speed: 0.05
   runSpeed: 2.5
   movement: {fileID: 4050686044933315238}
+--- !u!114 &4999476722155064855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361179431372546055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350aed4945674d246a6c62102786392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7841471433068364512
 GameObject:
   m_ObjectHideFlags: 0
