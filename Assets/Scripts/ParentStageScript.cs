@@ -1,7 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ParentStageScript : MonoBehaviour
@@ -12,6 +11,7 @@ public class ParentStageScript : MonoBehaviour
     [SerializeField] private GameObject coins;
     [SerializeField] private GameObject stage;
     [SerializeField] private string pathCsv;
+    [SerializeField] private List<Elevator> listTPs = new List<Elevator>();
 
     private List<GameObject> listGrounds;
     private List<GameObject> listIAs;
@@ -41,7 +41,7 @@ public class ParentStageScript : MonoBehaviour
 
     private void SpawnCoins()
     {
-        int randIndex = Random.Range(0, listGrounds.Count);
+        int randIndex = UnityEngine.Random.Range(0, listGrounds.Count);
         GameObject o = Instantiate(coins, listGrounds[randIndex].transform.position, Quaternion.identity);
         o.transform.SetParent(listGrounds[randIndex].transform);
         listGrounds.Remove(listGrounds[randIndex]);
@@ -82,4 +82,15 @@ public class ParentStageScript : MonoBehaviour
     {
         return listIAs.Count;
     }
+
+    public Vector3 GetPosTP(int index)
+    {
+        return listTPs[index].GetDestination();
+    }
+
+    public int getTPIndex(Elevator obj)
+    {
+        return listTPs.IndexOf(obj);
+    }
+
 }

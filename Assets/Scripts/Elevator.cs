@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    public int id;
     public Transform destination;
 
-    void Start()
+    public Vector3 GetDestination()
     {
-        ScriptGameManager.SGM.AddElevetor(id, destination.position);
+        return destination.position;
     }
 }
