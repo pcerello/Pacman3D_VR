@@ -17,7 +17,7 @@ public class PlayerTouch : MonoBehaviour
         }
         else if (other.CompareTag("Coin"))
         {
-            ScriptGameManager.SGM.CollectCoin(other.gameObject);
+            ScriptGameManager.SGM.CollectCoin(other.transform.parent.gameObject);
         }
     }
 }

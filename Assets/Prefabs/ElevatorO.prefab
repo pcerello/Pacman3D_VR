@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a13a4baebc3dc2e4f802df98273b4959, type: 2}
+  - {fileID: 2100000, guid: 432c83c062b47ca4a8b96c33cb8d9bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1112396333552719991}
   - component: {fileID: 8112397790544704949}
   m_Layer: 0
-  m_Name: Elevator
+  m_Name: ElevatorO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0090eeca21bb40a46a28fe7a82f21a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   destination: {fileID: 1990512188338450342}
 --- !u!1 &7371103084840376471
 GameObject:

@@ -58,6 +58,11 @@ public class ParentStageScript : MonoBehaviour
         return listCoins.Count;
     }
 
+    public void RemoveCoin(GameObject coin)
+    {
+        listCoins.Remove(coin);
+    }
+
     public void UnloadStage()
     {
         stage.SetActive(false);
