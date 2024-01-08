@@ -19,5 +19,9 @@ public class PlayerTouch : MonoBehaviour
         {
             ScriptGameManager.SGM.CollectCoin(other.transform.parent.gameObject);
         }
+        else if (other.CompareTag("IA"))
+        {
+            ScriptGameManager.SGM.GameOver();
+        }
     }
 }
