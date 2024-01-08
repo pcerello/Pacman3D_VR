@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,7 @@ public class ScriptGameManager : MonoBehaviour
     public static ScriptGameManager SGM;
 
     private int totalCoins;
+    private Boolean inGame;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class ScriptGameManager : MonoBehaviour
         {
             Destroy(this );
         }
+        inGame = true;
     }
 
     void Start()
@@ -51,6 +54,26 @@ public class ScriptGameManager : MonoBehaviour
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
         
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
+
+        if(points == totalCoins)
+        {
+            Win();
+        }
+    }
+
+    public void Win()
+    {
+        ssm.GoToWinArea(player);
+        inGame = false;
+    }
+
+    public void GameOver()
+    {
+        if (inGame)
+        {
+            ssm.GoToLoseArea(player);
+        }
+        inGame = false;
     }
 
     public ScriptSceneManager GetScriptSceneManager { get { return ssm; } }
@@ -103,10 +126,5 @@ public class ScriptGameManager : MonoBehaviour
     public int GetNbrIAsInStage(int id)
     {
         return ssm.GetNbrIAsInStage(id);
-    }
-
-    public void GameOver()
-    {
-        //
     }
 }
