@@ -64,19 +64,14 @@ public class ScriptGameManager : MonoBehaviour
         points += value;
     }
 
-    public void UpStage(int Id)
+    public void UpStage(Elevator tp)
     {
-        ssm.UpStage(Id, player);
+        ssm.UpStage(player, tp);
     }
 
-    public void DownStage(int Id)
+    public void DownStage(Elevator tp)
     {
-        ssm.DownStage(Id, player);
-    }
-
-    public void AddElevetor(int id, Vector3 pos)
-    {
-        ssm.AddElevetor(id, pos);
+        ssm.DownStage(player, tp);
     }
 
     public List<GameObject> GetListCoins()
