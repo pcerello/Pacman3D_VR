@@ -29,7 +29,7 @@ public class CreateLab : MonoBehaviour
     void Start()
     {
         stageParent = new GameObject();
-        stageParent.name = "Stage_"+stage;
+        stageParent.name = "Stage"+stage;
         stageParent.transform.position = Vector3.zero;
 
         walls = CreateBlock("Walls", false);
@@ -106,7 +106,6 @@ public class CreateLab : MonoBehaviour
             case "N":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(mur);
                 creation.transform.parent = walls.transform; // Non explorable (wall)
-
                 break;
             // sol
             case "W":
@@ -145,10 +144,8 @@ public class CreateLab : MonoBehaviour
                 break;
             // case anti spawn
             case "A":
-                GameObject a = (GameObject)PrefabUtility.InstantiatePrefab(sol);
-                a.transform.position = position * size;
-                GameObject antiSpawn = LocateOrCreateBlock("SafeZones", explorable: true);
-                a.transform.parent = antiSpawn.transform; // Explorable (Anti Spawn de coins)
+                creation = (GameObject)PrefabUtility.InstantiatePrefab(sol);
+                creation.transform.parent = safezones.transform; // Explorable (Anti Spawn de coins)
                 break;
             default:
                 print("Not exist");
