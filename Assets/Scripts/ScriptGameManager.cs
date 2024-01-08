@@ -104,4 +104,9 @@ public class ScriptGameManager : MonoBehaviour
     {
         return ssm.GetNbrIAsInStage(id);
     }
+
+    public void GameOver()
+    {
+        //
+    }
 }

@@ -411,7 +411,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3784426845360332372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,7 +1184,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6310262599159708871
 GameObject:
   m_ObjectHideFlags: 0
