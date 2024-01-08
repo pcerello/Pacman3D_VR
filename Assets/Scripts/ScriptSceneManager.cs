@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class ScriptSceneManager : MonoBehaviour
 {
     [SerializeField] private ParentStageScript[] listStages;
+    [SerializeField] private ParentStageScript winArea;
+    [SerializeField] private ParentStageScript loseArea;
     private int currentStage = 0;
 
     void Awake()
@@ -14,6 +17,8 @@ public class ScriptSceneManager : MonoBehaviour
         {
             listStages[i].UnloadStage();
         }
+        winArea.UnloadStage();
+        loseArea.UnloadStage();
     }
 
     public void UpStage(GameObject player, Elevator tp)
@@ -43,6 +48,20 @@ public class ScriptSceneManager : MonoBehaviour
         listStages[idLoad].LoadStage();
         listStages[idUnload].UnloadStage();
         player.transform.position = listStages[currentStage].GetPosTP(index);
+    }
+
+    public void GoToWinArea(GameObject player)
+    {
+        winArea.LoadStage();
+        listStages[currentStage].UnloadStage();
+        player.transform.position = winArea.GetPosTP(0);
+    }
+
+    public void GoToLoseArea(GameObject player)
+    {
+        loseArea.LoadStage();
+        listStages[currentStage].UnloadStage();
+        player.transform.position = loseArea.GetPosTP(0);
     }
 
     public ParentStageScript GetParentStage()

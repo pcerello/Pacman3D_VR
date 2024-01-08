@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTouch : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class PlayerTouch : MonoBehaviour
         else if (other.CompareTag("IA"))
         {
             ScriptGameManager.SGM.GameOver();
+        }
+        else if (other.CompareTag("ReturnMenu"))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }

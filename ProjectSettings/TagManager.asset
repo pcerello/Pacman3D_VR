@@ -8,6 +8,7 @@ TagManager:
   - TPDown
   - Coin
   - IA
+  - ReturnMenu
   layers:
   - Default
   - TransparentFX
