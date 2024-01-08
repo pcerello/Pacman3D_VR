@@ -1002,6 +1002,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostLinear (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_TagString
+      value: IA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089748809643268402, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365419023301580647, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460477819010965329, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6912234255991038092, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -2707,6 +2727,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostLinear (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_TagString
+      value: IA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089748809643268402, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365419023301580647, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460477819010965329, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6912234255991038092, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -2781,6 +2821,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 97801591}
     m_Modifications:
+    - target: {fileID: 130051120606908430, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1112396333552719991, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.317093
@@ -2821,13 +2865,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3017239621559619295, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6110897472396290706, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
       propertyPath: m_Name
       value: ElevatorO (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6110897472396290706, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110897472396290706, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
       propertyPath: m_TagString
       value: TPUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371103084840376471, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160187098733867994, guid: 8267165686ec48a48bce32579949ad4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3176,6 +3236,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostLinear
       objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059827711469996299, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_TagString
+      value: IA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089748809643268402, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365419023301580647, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460477819010965329, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6912234255991038092, guid: ead1b4cdc4f313c48abe6ae6ccb48595, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -3308,7 +3388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2065050076}
-  range: 2
+  range: 31
   centrePoint: {fileID: 2065050074}
 --- !u!114 &2107324129 stripped
 MonoBehaviour:
