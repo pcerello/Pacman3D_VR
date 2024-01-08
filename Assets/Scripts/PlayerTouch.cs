@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class PlayerTouch : MonoBehaviour
 {
@@ -11,17 +9,15 @@ public class PlayerTouch : MonoBehaviour
     {
         if (other.CompareTag("TPUp"))
         {
-            int id = other.GetComponentInParent<Elevator>().id;
-            ScriptGameManager.SGM.UpStage(id);
+            ScriptGameManager.SGM.UpStage(other.GetComponentInParent<Elevator>());
         }
         else if (other.CompareTag("TPDown"))
         {
-            int id = other.GetComponentInParent<Elevator>().id;
-            ScriptGameManager.SGM.DownStage(id);
+            ScriptGameManager.SGM.DownStage(other.GetComponentInParent<Elevator>());
         }
         else if (other.CompareTag("Coin"))
         {
-            ScriptGameManager.SGM.CollectCoin(other.gameObject);
+            ScriptGameManager.SGM.CollectCoin(other.transform.parent.gameObject);
         }
     }
 }

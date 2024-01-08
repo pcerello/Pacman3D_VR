@@ -49,12 +49,11 @@ public class ScriptGameManager : MonoBehaviour
     public void CollectCoin(GameObject coin)
     {
         points += 1;
-        ssm.GetListCoins().Remove(coin);
-        Destroy(coin.gameObject);
+        ssm.GetParentStage().RemoveCoin(coin);
+        Destroy(coin);
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
-
+        
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
-
     }
 
     public ScriptSceneManager GetScriptSceneManager { get { return ssm; } }
@@ -64,19 +63,14 @@ public class ScriptGameManager : MonoBehaviour
         points += value;
     }
 
-    public void UpStage(int Id)
+    public void UpStage(Elevator tp)
     {
-        ssm.UpStage(Id, player);
+        ssm.UpStage(player, tp);
     }
 
-    public void DownStage(int Id)
+    public void DownStage(Elevator tp)
     {
-        ssm.DownStage(Id, player);
-    }
-
-    public void AddElevetor(int id, Vector3 pos)
-    {
-        ssm.AddElevetor(id, pos);
+        ssm.DownStage(player, tp);
     }
 
     public List<GameObject> GetListCoins()

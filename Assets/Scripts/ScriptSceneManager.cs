@@ -7,47 +7,42 @@ public class ScriptSceneManager : MonoBehaviour
 {
     [SerializeField] private ParentStageScript[] listStages;
     private int currentStage = 0;
-    private Vector3[] teleportPoints;
-    [SerializeField] private int lenghtTps;
 
     void Awake()
     {
-        teleportPoints = new Vector3[lenghtTps];
-        for (int i = 1; i < lenghtTps; i++)
+        for (int i = 1; i < listStages.Length; i++)
         {
             listStages[i].UnloadStage();
         }
     }
 
-    public void UpStage(int Id, GameObject player)
+    public void UpStage(GameObject player, Elevator tp)
     {
-        if (currentStage < listStages.Length-1) {
+        if (currentStage < listStages.Length-1)
+        {
+            int index = listStages[currentStage].getTPIndex(tp);
             currentStage++;
-            LoadUnloadStage(currentStage, currentStage - 1);
+            LoadUnloadStage(currentStage, currentStage - 1, player, index);
 
-            player.transform.position = teleportPoints[Id];
         }
     }
 
-    public void DownStage(int Id, GameObject player)
+    public void DownStage(GameObject player, Elevator tp)
     {
-        if (currentStage > 0) {
+        if (currentStage > 0)
+        {
+            int index = listStages[currentStage].getTPIndex(tp);
             currentStage--;
-            LoadUnloadStage(currentStage, currentStage + 1);
+            LoadUnloadStage(currentStage, currentStage + 1, player, index);
 
-            player.transform.position = teleportPoints[Id];
         }
     }
 
-    private void LoadUnloadStage(int idLoad, int idUnload)
+    private void LoadUnloadStage(int idLoad, int idUnload, GameObject player, int index)
     {
         listStages[idLoad].LoadStage();
-        listStages[idUnload].UnloadStage(); 
-    }
-
-    public void AddElevetor(int id, Vector3 pos)
-    {
-        teleportPoints[id] = pos;
+        listStages[idUnload].UnloadStage();
+        player.transform.position = listStages[currentStage].GetPosTP(index);
     }
 
     public ParentStageScript GetParentStage()
