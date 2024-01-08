@@ -7,11 +7,10 @@ public class ScriptSceneManager : MonoBehaviour
 {
     [SerializeField] private ParentStageScript[] listStages;
     private int currentStage = 0;
-    [SerializeField] private int lenghtTps;
 
     void Awake()
     {
-        for (int i = 1; i < lenghtTps; i++)
+        for (int i = 1; i < listStages.Length; i++)
         {
             listStages[i].UnloadStage();
         }
