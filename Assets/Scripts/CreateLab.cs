@@ -8,9 +8,8 @@ using System.Diagnostics.Tracing;
 
 public class CreateLab : MonoBehaviour
 {
-    public string csvFilePath = "Assets/CSV/etage3.csv";
-
     [SerializeField] private float size = 1;
+    [SerializeField] private int stage = 1;
     [SerializeField] private GameObject mur;
     [SerializeField] private GameObject sol;
     [SerializeField] private GameObject tp_orange;
@@ -21,15 +20,27 @@ public class CreateLab : MonoBehaviour
     [SerializeField] private GameObject safe_zone;
 
     private GameObject stageParent;
+    private GameObject walls;
+    private GameObject grounds;
+    private GameObject teleporters;
+    private GameObject monsterspawns;
+    private GameObject safezones;
 
     void Start()
     {
         stageParent = new GameObject();
-        stageParent.name = "Stage";
+        stageParent.name = "Stage_"+stage;
         stageParent.transform.position = Vector3.zero;
+
+        walls = CreateBlock("Walls", false);
+        grounds = CreateBlock("Grounds", true);
+        teleporters = CreateBlock("Teleporters", true);
+        monsterspawns = CreateBlock("MonsterSpawns", true);
+        safezones = CreateBlock("SafeZones", false);
+
         ReadCSVFile();
-        GameObject ground = LocateOrCreateBlock("Grounds", true);
-        NavMeshSurface surface = ground.GetComponent<NavMeshSurface>();
+
+        NavMeshSurface surface = grounds.GetComponent<NavMeshSurface>();
         surface.layerMask = LayerMask.GetMask("Default");
 
         surface.AddData(); // Add the data of the environment
@@ -42,7 +53,7 @@ public class CreateLab : MonoBehaviour
         List<string[]> csvData = new List<string[]>();
 
         // Lire le fichier CSV ligne par ligne
-        using (StreamReader reader = new StreamReader(csvFilePath))
+        using (StreamReader reader = new StreamReader("Assets/CSV/etage" + stage + ".csv"))
         {
             while (!reader.EndOfStream)
             {
@@ -66,29 +77,23 @@ public class CreateLab : MonoBehaviour
             row_x++;
         }
     }
-    private GameObject LocateOrCreateBlock(string block_name, bool explorable)
+    private GameObject CreateBlock(string varName, bool explorable)
     {
-        GameObject explorableBlock = GameObject.Find(block_name);//TODO : Replace with dictionnary and reference -> faster
-
-        // If ExplorableBlocks doesn't exist, create it
-        if (explorableBlock == null)
+        GameObject obj = new GameObject(varName);
+        obj.transform.SetParent(stageParent.transform);
+        obj.transform.position = Vector3.zero;
+        if (!explorable)
         {
-            explorableBlock = new GameObject(block_name);
-            explorableBlock.transform.SetParent(stageParent.transform);
-            explorableBlock.transform.position = Vector3.zero;
-            if (!explorable)
-            {
-                NavMeshModifier modifierN = explorableBlock.AddComponent<NavMeshModifier>();
-                modifierN.overrideArea = true;
-                modifierN.area = 1;
-            }
-            else
-            {
-                explorableBlock.AddComponent<NavMeshSurface>();
-            }
+            NavMeshModifier modifierN = obj.AddComponent<NavMeshModifier>();
+            modifierN.overrideArea = true;
+            modifierN.area = 1;
+        }
+        else
+        {
+            obj.AddComponent<NavMeshSurface>();
         }
 
-        return explorableBlock;
+        return obj;
     }
 
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
@@ -100,51 +105,43 @@ public class CreateLab : MonoBehaviour
             // mur
             case "N":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(mur);
-                GameObject walls = LocateOrCreateBlock("Walls", explorable: false);
                 creation.transform.parent = walls.transform; // Non explorable (wall)
 
                 break;
             // sol
             case "W":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(sol);
-                GameObject ground = LocateOrCreateBlock("Grounds", explorable: true);
-                creation.transform.parent = ground.transform; // Explorable (ground)
+                creation.transform.parent = grounds.transform; // Explorable (ground)
                 break;
             // tp orange
             case "O":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(tp_orange);
-                GameObject tpOrange = LocateOrCreateBlock("Teleporters", explorable: true);
-                creation.transform.parent = tpOrange.transform; // Explorable (teleporter)
+                creation.transform.parent = teleporters.transform; // Explorable (teleporter)
                 break;
             // depart ghost
             case "C":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(spawn_ghost);
-                GameObject monsterSpawns = LocateOrCreateBlock("MonsterSpawns", explorable: true);
-                creation.transform.parent = monsterSpawns.transform; // Explorable (monster spawn)
+                creation.transform.parent = monsterspawns.transform; // Explorable (monster spawn)
                 break;
             // safe zone
             case "G":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(safe_zone);
-                GameObject safeZones = LocateOrCreateBlock("SafeZones", explorable: false);
-                creation.transform.parent = safeZones.transform; // Non explorable (safe zone)
+                creation.transform.parent = safezones.transform; // Non explorable (safe zone)
                 break;
             // tp jaune
             case "Y":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(tp_jaune);
-                GameObject tpJaune = LocateOrCreateBlock("Teleporters", explorable: true);
-                creation.transform.parent = tpJaune.transform; // Explorable (teleporter)
+                creation.transform.parent = teleporters.transform; // Explorable (teleporter)
                 break;
             // tp rouge
             case "R":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(tp_rouge);
-                GameObject tpRouge = LocateOrCreateBlock("Teleporters", explorable: true);
-                creation.transform.parent = tpRouge.transform; // Explorable (teleporter)
+                creation.transform.parent = teleporters.transform; // Explorable (teleporter)
                 break;
             // tp violet
             case "P":
                 creation = (GameObject)PrefabUtility.InstantiatePrefab(tp_violet);
-                GameObject tpViolet = LocateOrCreateBlock("Teleporters", explorable: true);
-                creation.transform.parent = tpViolet.transform; // Explorable (teleporter)
+                creation.transform.parent = teleporters.transform; // Explorable (teleporter)
                 break;
             default:
                 print("Not exist");
