@@ -11,10 +11,10 @@ def rotate_matrix_left(matrix):
     
     return rotated_matrix
 
-for etage in range(1, len(os.listdir('./stages_html'))+1):
-    file = f'./stages_html/Etage {etage}.html'
+for etage in range(1, len(os.listdir('./'))+1):
+    file = f'./Etage {etage}.html'
     if (etage == 12):
-        file = f'./stages_html/Etage Bonus.html'
+        file = f'./Etage Bonus.html'
     with open(file) as f:
         html_content = f.read()
     f.close()
@@ -65,7 +65,7 @@ for etage in range(1, len(os.listdir('./stages_html'))+1):
 
 
     # Write the transposed grid data to a CSV file
-    with open(f'./stages/etage{etage}.csv', 'w', newline='') as csvfile:
+    with open(f'../stages/etage{etage}.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(transposed_grid)
 
@@ -74,5 +74,5 @@ for etage in range(1, len(os.listdir('./stages_html'))+1):
     import pandas as pd
     import numpy as np
 
-    df = pd.read_csv(f'./stages/etage{etage}.csv', header=None)
+    df = pd.read_csv(f'../stages/etage{etage}.csv', header=None)
     print(df)
