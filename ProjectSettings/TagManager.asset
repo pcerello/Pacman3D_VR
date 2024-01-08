@@ -7,6 +7,7 @@ TagManager:
   - TPUp
   - TPDown
   - Coin
+  - IA
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ using UnityEngine;
 public class MapCalculator : MonoBehaviour
 {
     [SerializeField] public int stageNumber;
+    [SerializeField] public float tilesSize;
     [SerializeField] public Canvas canvas;
     [SerializeField] public GameObject wall;
     private float rate = (float)0.125;
@@ -114,7 +115,7 @@ public class MapCalculator : MonoBehaviour
 
         canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
 
-        tile.transform.position = canvasPos + rate * (localPosition / 3);
+        tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
         tile.transform.SetParent(canvas.transform);
         tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
     }
@@ -131,7 +132,7 @@ public class MapCalculator : MonoBehaviour
 
         canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
 
-        tile.transform.position = canvasPos + rate * (localPosition / 3);
+        tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
     }
 
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
