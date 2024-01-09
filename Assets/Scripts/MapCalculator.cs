@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapCalculator : MonoBehaviour
 {
@@ -10,19 +11,31 @@ public class MapCalculator : MonoBehaviour
     [SerializeField] public float tilesSize;
     [SerializeField] public Canvas canvas;
     [SerializeField] public GameObject wall;
+    [SerializeField] public Sprite wallSprite;
+    [SerializeField] public Sprite groundSprite;
+    [SerializeField] public Sprite playerSprite;
+    [SerializeField] public Sprite ghostSprite;
+    [SerializeField] public Sprite ghostSpawnSprite;
+    [SerializeField] public Sprite safeZoneSprite;
+    [SerializeField] public Sprite elevatorSprite;
+    [SerializeField] public Sprite coinSprite;
+    [SerializeField] public Sprite tp1Sprite;
+    [SerializeField] public Sprite tp2Sprite;
     private float rate = (float)0.125;
     private GameObject MapPlayer;
     private Dictionary<GameObject, GameObject> MapAIs = new Dictionary<GameObject, GameObject>();
-    private List<GameObject> MapCoins = new List<GameObject>(); // TODO : Lier aux coins pour les suppr ou etc
 
     void Start()
     {
         ReadCSVFile();
-        LocatePlayerAndAIS();
-        foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber-1))
+        foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber - 1))
         {
-            makeTile("MapCoin", coin.transform.position, wall.transform.position, (float)17 / 18, (float)0.475, (float)0.949);
+            GameObject coinMinimap = makeTile("MapCoin", coin.transform.position, wall.transform.position);
+            coinMinimap.GetComponent<Image>().sprite = coinSprite;
+            CoinBehavior coinBehavior = coin.AddComponent<CoinBehavior>();
+            coinBehavior.setMinimapCoin(coinMinimap);
         }
+        LocatePlayerAndAIS();
     }
 
     private void Update()
@@ -33,7 +46,21 @@ public class MapCalculator : MonoBehaviour
         {
             GameObject AI = pair.Key;
             GameObject mapAI = pair.Value;
-            updateTile(mapAI, AI.transform.position, wall.transform.position);
+            if (AI != null)
+            {
+                updateTile(mapAI, AI.transform.position, wall.transform.position);
+            } else
+            {
+                removeTile(mapAI);
+            }
+        }
+    }
+
+    void removeTile(GameObject mapAI)
+    {
+        if (mapAI != null)
+        {
+            Destroy(mapAI);
         }
     }
 
@@ -42,10 +69,12 @@ public class MapCalculator : MonoBehaviour
         List<GameObject> AIs = ScriptGameManager.SGM.GetListIAsStage(stageNumber-1);
         for (int i = 0; i < ScriptGameManager.SGM.GetListIAsStage(stageNumber-1).Count; i++)
         {
-            MapAIs[AIs[i]] = makeTileFromCSV("MapAI"+i, AIs[i].transform.position, (float)0.8, 1, 1);
+            MapAIs[AIs[i]] = makeTileFromCSV("MapAI"+i, AIs[i].transform.position);
+            MapAIs[AIs[i]].GetComponent<Image>().sprite = ghostSprite;
         }
 
-        MapPlayer = makeTileFromCSV("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position, 0, 1, 1);
+        MapPlayer = makeTileFromCSV("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position);
+        MapPlayer.GetComponent<Image>().sprite = playerSprite;
     }
 
     void ReadCSVFile()
@@ -79,11 +108,10 @@ public class MapCalculator : MonoBehaviour
         }
     }
 
-    private GameObject makeTileFromCSV(string tileName, Vector3 position, float H, float S, float V)
+    private GameObject makeTileFromCSV(string tileName, Vector3 position)
     {
         GameObject tile = new GameObject(tileName);
-        UnityEngine.UI.Image tileImage = tile.AddComponent<UnityEngine.UI.Image>();
-        tileImage.color = UnityEngine.Color.HSVToRGB(H, S, V);
+        Image tileImage = tile.AddComponent<Image>();
         position.z = 0;
 
 
@@ -100,11 +128,10 @@ public class MapCalculator : MonoBehaviour
 
         return tile;
     }
-    private void makeTile(string tileName, Vector3 playerPosition, Vector3 mapPosition, float H, float S, float V)
+    private GameObject makeTile(string tileName, Vector3 playerPosition, Vector3 mapPosition)
     {
         GameObject tile = new GameObject(tileName);
-        UnityEngine.UI.Image tileImage = tile.AddComponent<UnityEngine.UI.Image>();
-        tileImage.color = UnityEngine.Color.HSVToRGB(H, S, V);
+        Image tileImage = tile.AddComponent<Image>();
 
         Vector3 localPosition = playerPosition - mapPosition;
         localPosition.y = localPosition.z;
@@ -118,6 +145,7 @@ public class MapCalculator : MonoBehaviour
         tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
         tile.transform.SetParent(canvas.transform);
         tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
+        return tile;
     }
 
     private void updateTile(GameObject tile, Vector3 playerPosition, Vector3 mapPosition)
@@ -138,39 +166,52 @@ public class MapCalculator : MonoBehaviour
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
     {
         Vector3 position = new Vector3(col, lineNumber, 0);
+        GameObject tile = null;
         switch (columns[col])
         {
             //mur
             case "N":
-                makeTileFromCSV("MapWall", position, 0, 0, 0);
+                tile = makeTileFromCSV("MapWall", position); 
+                tile.GetComponent<Image>().sprite = wallSprite;
                 break;
             //sol
             case "W":
-                makeTileFromCSV("MapGround", position, 0, 0, 1);
+                tile = makeTileFromCSV("MapGround", position);
+                tile.GetComponent<Image>().sprite = groundSprite;
                 break;
             //tp orange
             case "O":
-                makeTileFromCSV("MapOTP", position, (float)0.1, 1, 1);
+                tile = makeTileFromCSV("MapOTP", position);
+                tile.GetComponent<Image>().sprite = elevatorSprite;
                 break;
             //depart ghost   
             case "C":
-                makeTileFromCSV("MapStartGhost", position, (float)0.5, 1, 1);
+                tile = makeTileFromCSV("MapStartGhost", position);
+                tile.GetComponent<Image>().sprite = ghostSpawnSprite;
                 break;
             //safe zone
             case "G":
-                makeTileFromCSV("MapSafeZone", position, (float)1/3, 1, 1);
+                tile = makeTileFromCSV("MapSafeZone", position);
+                tile.GetComponent<Image>().sprite = safeZoneSprite;
                 break;
             //tp jaune
             case "Y":
-                makeTileFromCSV("MapYTP", position, (float)1/6, 1, 1);
+                tile = makeTileFromCSV("MapYTP", position);
+                tile.GetComponent<Image>().sprite = elevatorSprite;
                 break;
             //tp rouge
             case "R":
-                makeTileFromCSV("MapRTP", position, 0, 1, 1);
+                GameObject tileGround = makeTileFromCSV("MapGround", position);
+                tileGround.GetComponent<Image>().sprite = groundSprite;
+                tile = makeTileFromCSV("MapRTP", position);
+                tile.GetComponent<Image>().sprite = tp1Sprite;
                 break;
             //tp violet
             case "P":
-                makeTileFromCSV("MapPTP", position, (float)23/30, 1, 1);
+                GameObject tileGround2 = makeTileFromCSV("MapGround", position);
+                tileGround2.GetComponent<Image>().sprite = groundSprite;
+                tile = makeTileFromCSV("MapPTP", position);
+                tile.GetComponent<Image>().sprite = tp2Sprite;
                 break;
         }
     }
