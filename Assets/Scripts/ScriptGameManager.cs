@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class ScriptGameManager : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class ScriptGameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public TMP_Text scoreText;
     [SerializeField] private ScripTableMap tableMap;
+    [SerializeField] private AudioClip sfxHit;
+    [SerializeField] private AudioClip sfxPowerUp;
+    [SerializeField] private AudioClip sfxExplosion;
+    [SerializeField] private AudioClip sfxPickup;
+    [SerializeField] private AudioClip sfxGhost;
+    [SerializeField] private AudioClip sfxWin;
+    [SerializeField] private AudioClip sfxLose;
+    private AudioSource sfxHitSource;
 
     public static ScriptGameManager SGM;
 
@@ -29,6 +38,7 @@ public class ScriptGameManager : MonoBehaviour
             Destroy(this );
         }
         inGame = true;
+        sfxHitSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -44,6 +54,12 @@ public class ScriptGameManager : MonoBehaviour
         }
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
 
+    }
+
+    public void PlaySfx(AudioClip sfx, float pitch, float volume)
+    {
+        sfxHitSource.pitch = pitch;
+        sfxHitSource.PlayOneShot(sfx, volume);
     }
 
     public void CollectCoin(GameObject coin)
@@ -65,6 +81,7 @@ public class ScriptGameManager : MonoBehaviour
     {
         ssm.GoToWinArea(player);
         inGame = false;
+        PlaySfx(sfxWin, 1f, 1f);
     }
 
     public void GameOver()
@@ -72,6 +89,7 @@ public class ScriptGameManager : MonoBehaviour
         if (inGame)
         {
             ssm.GoToLoseArea(player);
+            PlaySfx(sfxLose, 1f, 1f);
         }
         inGame = false;
     }

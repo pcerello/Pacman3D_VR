@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2965419232261247072}
+  - component: {fileID: 1169920331799290561}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 2574259243241408239}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1169920331799290561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736225571521372545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9780a0df339ae1443979541d4f662dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleDestroyed: {fileID: 1146617672045816138, guid: 12afefd4c7a31974fb2cae8ac42b156f, type: 3}
+  transformSpawn: {fileID: 2574259243241408239}
 --- !u!1001 &2608466378978943236
 PrefabInstance:
   m_ObjectHideFlags: 0

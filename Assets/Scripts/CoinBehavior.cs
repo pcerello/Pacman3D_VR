@@ -5,6 +5,8 @@ using UnityEngine;
 public class CoinBehavior : MonoBehaviour
 {
     private GameObject minimapLink;
+    [SerializeField] private GameObject particleDestroyed;
+    [SerializeField] private Transform transformSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +22,6 @@ public class CoinBehavior : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(minimapLink);
+        Instantiate(particleDestroyed, transformSpawn.position, Quaternion.identity);
     }
 }
