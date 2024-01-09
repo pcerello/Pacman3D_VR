@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class ShortestPathMovement : MonoBehaviour
 {
     private Transform target;
-    public NavMeshAgent Agent;
+    private NavMeshAgent Agent;
     private float lastActionTime;
     private bool paused;
 
@@ -16,6 +16,7 @@ public class ShortestPathMovement : MonoBehaviour
         target = ScriptGameManager.SGM.GetTransformPlayer();
         lastActionTime = -1;
         paused = false;
+        Agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()

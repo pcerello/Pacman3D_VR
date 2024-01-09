@@ -10,7 +10,7 @@ public class MapCalculator : MonoBehaviour
     [SerializeField] public int stageNumber;
     [SerializeField] public float tilesSize;
     [SerializeField] public Canvas canvas;
-    [SerializeField] public GameObject wall;
+    [SerializeField] public GameObject stageObject;
     [SerializeField] public Sprite wallSprite;
     [SerializeField] public Sprite groundSprite;
     [SerializeField] public Sprite playerSprite;
@@ -30,7 +30,7 @@ public class MapCalculator : MonoBehaviour
         ReadCSVFile();
         foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber - 1))
         {
-            GameObject coinMinimap = makeTile("MapCoin", coin.transform.position, wall.transform.position);
+            GameObject coinMinimap = makeTile("MapCoin", coin.transform.position, stageObject.transform.position);
             coinMinimap.GetComponent<Image>().sprite = coinSprite;
             CoinBehavior coinBehavior = coin.AddComponent<CoinBehavior>();
             coinBehavior.setMinimapCoin(coinMinimap);
@@ -40,7 +40,7 @@ public class MapCalculator : MonoBehaviour
 
     private void Update()
     {
-        updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, wall.transform.position);
+        updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, stageObject.transform.position);
 
         foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
         {
@@ -48,7 +48,7 @@ public class MapCalculator : MonoBehaviour
             GameObject mapAI = pair.Value;
             if (AI != null)
             {
-                updateTile(mapAI, AI.transform.position, wall.transform.position);
+                updateTile(mapAI, AI.transform.position, stageObject.transform.position);
             } else
             {
                 removeTile(mapAI);
@@ -74,7 +74,10 @@ public class MapCalculator : MonoBehaviour
         }
 
         MapPlayer = makeTileFromCSV("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position);
-        MapPlayer.GetComponent<Image>().sprite = playerSprite;
+        if (MapPlayer != null)
+        {
+            MapPlayer.GetComponent<Image>().sprite = playerSprite;
+        }
     }
 
     void ReadCSVFile()
@@ -107,27 +110,45 @@ public class MapCalculator : MonoBehaviour
             row_x++;
         }
     }
-
     private GameObject makeTileFromCSV(string tileName, Vector3 position)
     {
+
+        Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
+        Vector3 canvasPos = canvas.transform.position - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
+
         GameObject tile = new GameObject(tileName);
         Image tileImage = tile.AddComponent<Image>();
         position.z = 0;
 
-
-        Vector3 canvasPos = canvas.transform.position;
-        Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
-        Debug.Log(wh.x);
-        Debug.Log(wh.y);
-        Debug.Log(rate);
-        canvasPos = canvasPos - new Vector3((wh.x+rate)/2-rate, (wh.y+rate)/2-rate);
         tile.transform.position = canvasPos + rate * position;
         tile.transform.SetParent(canvas.transform);
         tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
 
+        if (!IsTileInsideCanvas(canvas.transform.position, canvasPos + rate * position, wh))
+        {
+            tile.SetActive(false);
+        }
 
         return tile;
     }
+
+    bool IsTileInsideCanvas(Vector3 canvasPosition, Vector3 tilePosition, Vector2 canvasSize)
+    {
+        // Extract the x, y, and z coordinates of the positions
+        float canvasX = canvasPosition.x;
+        float canvasY = canvasPosition.y;
+
+        float tileX = tilePosition.x;
+        float tileY = tilePosition.y;
+
+        // Check if the tile's x, y, and z coordinates are within the canvas bounds
+        bool insideX = tileX >= canvasX - canvasSize.x/2 - rate/2 && tileX <= canvasX + canvasSize.x/2 + rate/2;
+        bool insideY = tileY >= canvasY - canvasSize.y/2 - rate/2 && tileY <= canvasY + canvasSize.y/2 + rate/2;
+
+        // Return true if the tile is within the bounds in all three dimensions
+        return insideX && insideY;
+    }
+
     private GameObject makeTile(string tileName, Vector3 playerPosition, Vector3 mapPosition)
     {
         GameObject tile = new GameObject(tileName);
@@ -161,6 +182,15 @@ public class MapCalculator : MonoBehaviour
         canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
 
         tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
+
+        if (IsTileInsideCanvas(canvas.transform.position, canvasPos + rate * (localPosition / (float)tilesSize), wh))
+        {
+            tile.SetActive(true);
+        }
+        else
+        {
+            tile.SetActive(false);
+        }
     }
 
     private void SpawnObjLab(string[] columns, int lineNumber, int col)
