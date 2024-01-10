@@ -10,6 +10,12 @@ public class ShortestPathMovement : MonoBehaviour
     private NavMeshAgent Agent;
     private float lastActionTime;
     private bool paused;
+    private AudioSource source;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -39,12 +45,14 @@ public class ShortestPathMovement : MonoBehaviour
             paused = false;
             lastActionTime = Time.time;
             Agent.isStopped = false;
+            
         }
         else if (Time.time - lastActionTime >= 2.25 && !paused)
         {
             paused = true;
             lastActionTime = Time.time;
             Agent.isStopped = true;
+            source.Play();
         }
 
         if (NavMesh.CalculatePath(transform.position, target.position, Agent.areaMask, Path) && !paused)

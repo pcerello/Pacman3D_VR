@@ -11,7 +11,13 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
     private NavMeshAgent agent;
     private Transform centrePoint; //centre of the area the agent wants to move around in
     //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
+    
+    private AudioSource source;
 
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,6 +35,11 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
                 Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                 agent.SetDestination(point);
             }
+        }
+
+        if(Time.time % 5 == 0)
+        {
+            source.Play();
         }
 
     }

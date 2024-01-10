@@ -21,25 +21,33 @@ public class ScriptSceneManager : MonoBehaviour
         loseArea.UnloadStage();
     }
 
-    public void UpStage(GameObject player, Elevator tp)
+    public bool UpStage(GameObject player, Elevator tp)
     {
         if (currentStage < listStages.Length-1)
         {
             int index = listStages[currentStage].getTPIndex(tp);
             currentStage++;
             LoadUnloadStage(currentStage, currentStage - 1, player, index);
-
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
-    public void DownStage(GameObject player, Elevator tp)
+    public bool DownStage(GameObject player, Elevator tp)
     {
         if (currentStage > 0)
         {
             int index = listStages[currentStage].getTPIndex(tp);
             currentStage--;
             LoadUnloadStage(currentStage, currentStage + 1, player, index);
-
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
