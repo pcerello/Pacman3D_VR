@@ -740,7 +740,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ba2009cf54ebc714d9469b97acc60ce3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1293,6 +1293,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5839115d663683942ba00f953ccc26bc, type: 3}
+--- !u!1 &1505503851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505503852}
+  m_Layer: 0
+  m_Name: emptymap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505503852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505503851}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782490472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 945156087105782879, guid: 28b9819844c10d64780282850135ea6f, type: 3}
@@ -1416,6 +1447,10 @@ PrefabInstance:
       propertyPath: tableMap
       value: 
       objectReference: {fileID: 983836404}
+    - target: {fileID: 1711027735660227549, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
+      propertyPath: mapPrefab
+      value: 
+      objectReference: {fileID: 1505503851}
     - target: {fileID: 1711027735660227549, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
       propertyPath: scoreText
       value: 
@@ -1794,3 +1829,4 @@ SceneRoots:
   - {fileID: 393513058}
   - {fileID: 55301779}
   - {fileID: 77719301}
+  - {fileID: 1505503852}
