@@ -1582,6 +1582,8 @@ MonoBehaviour:
   canvas: {fileID: 1349298282196961999}
   firstMenu: {fileID: 0}
   secondMenu: {fileID: 0}
+  optionMenu: {fileID: 0}
+  audioMixerMusic: {fileID: 0}
 --- !u!114 &105380964293218615
 MonoBehaviour:
   m_ObjectHideFlags: 0
