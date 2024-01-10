@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1459,77 +1459,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4209782835069087812, guid: 5839115d663683942ba00f953ccc26bc, type: 3}
   m_PrefabInstance: {fileID: 1964803893}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1124689212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1124689215}
-  - component: {fileID: 1124689214}
-  - component: {fileID: 1124689213}
-  m_Layer: 0
-  m_Name: scriptGMng
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1124689213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124689212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae07a579635acc47a89f039d4fca380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listStages:
-  - {fileID: 1258503748}
-  - {fileID: 535620229}
-  winArea: {fileID: 1406131732}
-  loseArea: {fileID: 119335158}
---- !u!114 &1124689214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124689212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9571cf65a77e32147916f7d5549d318c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ssm: {fileID: 1124689213}
-  player: {fileID: 599038272}
-  mapPrefab: {fileID: 3046745348295487800, guid: 88f973f8ff1dc62419e31a68827498c1, type: 3}
-  scoreText: {fileID: 1255738309}
-  tableMap: {fileID: 2107324129}
-  sfxWin: {fileID: 0}
-  sfxLose: {fileID: 0}
-  sfxElevator: {fileID: 0}
-  sfxNegative: {fileID: 0}
---- !u!4 &1124689215
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124689212}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.72, y: 0.5, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1147674078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2135,6 +2064,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2107324129}
     - target: {fileID: 1711027735660227549, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
+      propertyPath: mapPrefab
+      value: 
+      objectReference: {fileID: 3046745348295487800, guid: 88f973f8ff1dc62419e31a68827498c1, type: 3}
+    - target: {fileID: 1711027735660227549, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1255738309}
@@ -2156,7 +2089,7 @@ PrefabInstance:
       objectReference: {fileID: 535620229}
     - target: {fileID: 5692797940743367767, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
       propertyPath: m_Name
-      value: scriptGMng (1)
+      value: scriptGMng
       objectReference: {fileID: 0}
     - target: {fileID: 7373675571361524903, guid: ede9b50089a26cc4d8e4fa3d6edf07ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2969,7 +2902,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 778294854}
-  - {fileID: 1124689215}
   - {fileID: 1518687156}
   - {fileID: 1258503749}
   - {fileID: 535620230}
