@@ -13,7 +13,6 @@ public class ScriptGameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] public TMP_Text scoreText;
     [SerializeField] private ScripTableMap tableMap;
-    [SerializeField] private AudioClip sfxGhost;
     [SerializeField] private AudioClip sfxWin;
     [SerializeField] private AudioClip sfxLose;
     [SerializeField] private AudioClip sfxElevator;
@@ -64,7 +63,8 @@ public class ScriptGameManager : MonoBehaviour
     {
         points += 1;
         ssm.GetParentStage().RemoveCoin(coin);
-        Destroy(coin);
+
+        coin.GetComponent<CoinBehavior>().DestroyCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
         
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
