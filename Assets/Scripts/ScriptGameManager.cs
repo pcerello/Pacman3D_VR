@@ -62,11 +62,12 @@ public class ScriptGameManager : MonoBehaviour
     public void initMaps()
     {
         ParentStageScript[] list = ssm.GetListParentStage();
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < list.Length; i++)
         {
             GameObject map = (GameObject)PrefabUtility.InstantiatePrefab(mapPrefab);
             map.GetComponent<MapCalculator>().stageNumber = i + 1;
             map.GetComponent<MapCalculator>().stageObject = list[i].gameObject;
+            map.transform.parent = player.transform;
         }
     }
 
