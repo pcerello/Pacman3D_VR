@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ssm: {fileID: 4809333669362347033}
   player: {fileID: 0}
+  mapPrefab: {fileID: 0}
   scoreText: {fileID: 0}
   tableMap: {fileID: 0}
-  sfxGhost: {fileID: 8300000, guid: 1c3f5dc743931f44bb261a7f00015286, type: 3}
   sfxWin: {fileID: 8300000, guid: 6c8bcf43f0d0c244eae97f04ef640528, type: 3}
-  sfxLose: {fileID: 8300000, guid: 2e50994f2a9b306419cda9f473705402, type: 3}
+  sfxLose: {fileID: 8300000, guid: ead0a47ffa160bd4b8dfb413e599b200, type: 3}
   sfxElevator: {fileID: 8300000, guid: 5b2205594e6912f4192eae371cd9f729, type: 3}
   sfxNegative: {fileID: 8300000, guid: 9b5f1cb53160ac142b714ccf18c10ee9, type: 3}
 --- !u!114 &4809333669362347033

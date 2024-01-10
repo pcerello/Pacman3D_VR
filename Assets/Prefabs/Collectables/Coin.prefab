@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dfc79f4e80fe340977c8137873f3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 1, y: 0, z: 0}
+  _rotation: {x: 0, y: 0, z: 1}
   _speed: 50
 --- !u!54 &6204003973954338770
 Rigidbody:
