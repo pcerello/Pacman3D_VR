@@ -64,7 +64,7 @@ public class ScriptGameManager : MonoBehaviour
             GameObject map = (GameObject)PrefabUtility.InstantiatePrefab(mapPrefab);
             map.GetComponent<MapCalculator>().stageNumber = i + 1;
             map.GetComponent<MapCalculator>().stageObject = list[i].gameObject;
-            map.transform.parent = player.transform;
+            map.transform.SetParent(player.transform);
         }
     }
 
