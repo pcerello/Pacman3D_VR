@@ -70,7 +70,8 @@ public class MapCalculator : MonoBehaviour
 
     private Vector3 getCanvasPos()
     {
-        return canvas.transform.position - new Vector3((wh.x) / 4 - (float)0.5 * rate, (wh.y) / 4 - (float)0.5 * rate);
+        print("wh : "+wh);
+        return canvas.transform.position - new Vector3((transform.localScale.x * wh.x / 2) - (rate/2),(transform.localScale.y*  wh.y / 2) - (rate / 2)) ;
     }
 
     void LocatePlayerAndAIS()
@@ -125,7 +126,7 @@ public class MapCalculator : MonoBehaviour
         Vector3 canvasPos = getCanvasPos();
 
         GameObject tile = new GameObject(tileName);
-        Image tileImage = tile.AddComponent<Image>();
+        tile.AddComponent<Image>();
         position.z = 0;
 
         tile.transform.position = canvasPos + rate * position;
@@ -134,7 +135,7 @@ public class MapCalculator : MonoBehaviour
 
         if (!IsTileInsideCanvas(canvas.transform.position, canvasPos + rate * position, wh))
         {
-            tile.SetActive(false);
+            //tile.SetActive(false);
         }
 
         return tile;
@@ -187,11 +188,11 @@ public class MapCalculator : MonoBehaviour
 
         if (IsTileInsideCanvas(canvas.transform.position, canvasPos + rate * (localPosition / (float)tilesSize), wh))
         {
-            tile.SetActive(true);
+            //tile.SetActive(true);
         }
         else
         {
-            tile.SetActive(false);
+            //tile.SetActive(false);
         }
     }
 
