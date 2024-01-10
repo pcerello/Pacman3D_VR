@@ -24,7 +24,6 @@ public class ShortestPathMovement : MonoBehaviour
         Transform closestTarget = null;
         float closestTargetDistance = float.MaxValue;
         NavMeshPath Path = new NavMeshPath();
-        Debug.Log(paused);
 
         if (target == null)
         {

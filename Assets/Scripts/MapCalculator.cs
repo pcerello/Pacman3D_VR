@@ -24,9 +24,13 @@ public class MapCalculator : MonoBehaviour
     private float rate = (float)0.125;
     private GameObject MapPlayer;
     private Dictionary<GameObject, GameObject> MapAIs = new Dictionary<GameObject, GameObject>();
+    private Vector2 wh;
 
     void Start()
     {
+        RectTransform rt = GetComponent<RectTransform>();
+        wh = rt.sizeDelta;
+        rate = (wh.x / 36) * rt.localScale.x;
         ReadCSVFile();
         foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber - 1))
         {
@@ -62,6 +66,11 @@ public class MapCalculator : MonoBehaviour
         {
             Destroy(mapAI);
         }
+    }
+
+    private Vector3 getCanvasPos()
+    {
+        return canvas.transform.position - new Vector3((wh.x) / 4 - (float)0.5 * rate, (wh.y) / 4 - (float)0.5 * rate);
     }
 
     void LocatePlayerAndAIS()
@@ -113,8 +122,7 @@ public class MapCalculator : MonoBehaviour
     private GameObject makeTileFromCSV(string tileName, Vector3 position)
     {
 
-        Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
-        Vector3 canvasPos = canvas.transform.position - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
+        Vector3 canvasPos = getCanvasPos();
 
         GameObject tile = new GameObject(tileName);
         Image tileImage = tile.AddComponent<Image>();
@@ -158,10 +166,7 @@ public class MapCalculator : MonoBehaviour
         localPosition.y = localPosition.z;
         localPosition.z = 0;
 
-        Vector3 canvasPos = canvas.transform.position;
-        Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
-
-        canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
+        Vector3 canvasPos = getCanvasPos();
 
         tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
         tile.transform.SetParent(canvas.transform);
@@ -176,10 +181,7 @@ public class MapCalculator : MonoBehaviour
         localPosition.y = localPosition.z;
         localPosition.z = 0;
 
-        Vector3 canvasPos = canvas.transform.position;
-        Vector2 wh = canvas.GetComponent<RectTransform>().sizeDelta;
-
-        canvasPos = canvasPos - new Vector3((wh.x + rate) / 2 - rate, (wh.y + rate) / 2 - rate);
+        Vector3 canvasPos = getCanvasPos();
 
         tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
 
