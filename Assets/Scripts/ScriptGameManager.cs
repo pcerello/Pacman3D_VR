@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using static Unity.VisualScripting.Member;
 
 public class ScriptGameManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class ScriptGameManager : MonoBehaviour
     private int points;
     [SerializeField] private ScriptSceneManager ssm;
     [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerHand;
     [SerializeField] private GameObject mapPrefab;
     [SerializeField] public TMP_Text scoreText;
     [SerializeField] private ScripTableMap tableMap;
@@ -53,18 +55,21 @@ public class ScriptGameManager : MonoBehaviour
         }
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
 
+
+        playerHand = playerHand.gameObject.GetComponentInChildren<Transform>(true);
         initMaps();
     }
 
     public void initMaps()
     {
         ParentStageScript[] list = ssm.GetListParentStage();
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < 1; i++)
         {
-            GameObject map = (GameObject)PrefabUtility.InstantiatePrefab(mapPrefab);
+            GameObject map = Instantiate(mapPrefab);
             map.GetComponent<MapCalculator>().stageNumber = i + 1;
             map.GetComponent<MapCalculator>().stageObject = list[i].gameObject;
-            map.transform.SetParent(player.transform);
+            map.transform.SetParent(playerHand);
+            map.GetComponent<RectTransform>().localPosition = new Vector3(0,0,(float)2.5);
         }
     }
 
