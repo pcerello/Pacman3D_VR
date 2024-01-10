@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
+using static Unity.VisualScripting.Member;
 
 public class MenuButton : MonoBehaviour
 {
@@ -10,8 +12,16 @@ public class MenuButton : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject firstMenu;
     [SerializeField] private GameObject secondMenu;
+    [SerializeField] private GameObject optionMenu;
 
     private bool _pause = false;
+    public AudioMixer audioMixerMusic;
+    private AudioSource source;
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -23,6 +33,7 @@ public class MenuButton : MonoBehaviour
         {
             firstMenu.SetActive(true);
             secondMenu.SetActive(false);
+            optionMenu.SetActive(false);
         }
 
     }
@@ -36,6 +47,18 @@ public class MenuButton : MonoBehaviour
     public void UnSelectLevel()
     {
         secondMenu.SetActive(false);
+        firstMenu.SetActive(true);
+    }
+
+    public void SelectOptions()
+    {
+        firstMenu.SetActive(false);
+        optionMenu.SetActive(true);
+    }
+
+    public void UnSelectOptions()
+    {
+        optionMenu.SetActive(false);
         firstMenu.SetActive(true);
     }
 
@@ -56,5 +79,16 @@ public class MenuButton : MonoBehaviour
             _pause = !_pause;
             canvas.SetActive(_pause);
         }
+    }
+
+    public void SetVolumeMusic(float volume)
+    {
+        audioMixerMusic.SetFloat("volumeMusic",volume);
+    }
+
+    public void SetVolumeSfx(float volume)
+    {
+        audioMixerMusic.SetFloat("volumeSfx", volume);
+        source.Play();
     }
 }

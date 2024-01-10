@@ -8,20 +8,15 @@ public class CoinBehavior : MonoBehaviour
     [SerializeField] private GameObject particleDestroyed;
     [SerializeField] private Transform transformSpawn;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void setMinimapCoin(GameObject minimapCoin)
     {
         minimapLink = minimapCoin;
     }
 
-    private void OnDestroy()
+    public void DestroyCoin()
     {
         Destroy(minimapLink);
         Instantiate(particleDestroyed, transformSpawn.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

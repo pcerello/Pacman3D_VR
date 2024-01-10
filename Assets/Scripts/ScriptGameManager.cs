@@ -15,14 +15,11 @@ public class ScriptGameManager : MonoBehaviour
     [SerializeField] private GameObject mapPrefab;
     [SerializeField] public TMP_Text scoreText;
     [SerializeField] private ScripTableMap tableMap;
-    [SerializeField] private AudioClip sfxHit;
-    [SerializeField] private AudioClip sfxPowerUp;
-    [SerializeField] private AudioClip sfxExplosion;
-    [SerializeField] private AudioClip sfxPickup;
-    [SerializeField] private AudioClip sfxGhost;
     [SerializeField] private AudioClip sfxWin;
     [SerializeField] private AudioClip sfxLose;
-    private AudioSource sfxHitSource;
+    [SerializeField] private AudioClip sfxElevator;
+    [SerializeField] private AudioClip sfxNegative;
+    private AudioSource source;
 
     public static ScriptGameManager SGM;
     private GameObject[] maps;
@@ -40,7 +37,7 @@ public class ScriptGameManager : MonoBehaviour
             Destroy(this );
         }
         inGame = true;
-        sfxHitSource = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -73,15 +70,16 @@ public class ScriptGameManager : MonoBehaviour
 
     public void PlaySfx(AudioClip sfx, float pitch, float volume)
     {
-        sfxHitSource.pitch = pitch;
-        sfxHitSource.PlayOneShot(sfx, volume);
+        source.pitch = pitch;
+        source.PlayOneShot(sfx, volume);
     }
 
     public void CollectCoin(GameObject coin)
     {
         points += 1;
         ssm.GetParentStage().RemoveCoin(coin);
-        Destroy(coin);
+
+        coin.GetComponent<CoinBehavior>().DestroyCoin();
         scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
         
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
@@ -118,12 +116,27 @@ public class ScriptGameManager : MonoBehaviour
 
     public void UpStage(Elevator tp)
     {
-        ssm.UpStage(player, tp);
+        
+        if(ssm.UpStage(player, tp))
+        {
+            PlaySfx(sfxElevator, 1f, 1f);
+        }
+        else
+        {
+            PlaySfx(sfxNegative, 1f, 1f);
+        }
     }
 
     public void DownStage(Elevator tp)
     {
-        ssm.DownStage(player, tp);
+        if (ssm.DownStage(player, tp))
+        {
+            PlaySfx(sfxElevator, 1f, 1f);
+        }
+        else
+        {
+            PlaySfx(sfxNegative, 1f, 1f);
+        }
     }
 
     public List<GameObject> GetListCoins()
