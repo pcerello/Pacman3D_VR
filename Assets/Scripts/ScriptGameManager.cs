@@ -16,7 +16,7 @@ public class ScriptGameManager : MonoBehaviour
     [SerializeField] private Transform playerHand;
     [SerializeField] private GameObject mapPrefab;
     [SerializeField] public TMP_Text scoreText;
-    [SerializeField] private ScripTableMap tableMap;
+    private ScripTableMap tableMap;
     [SerializeField] private AudioClip sfxWin;
     [SerializeField] private AudioClip sfxLose;
     [SerializeField] private AudioClip sfxElevator;
@@ -39,6 +39,7 @@ public class ScriptGameManager : MonoBehaviour
             Destroy(this );
         }
         inGame = true;
+        tableMap = FindObjectOfType<ScripTableMap>();
         source = GetComponent<AudioSource>();
     }
 
@@ -180,5 +181,10 @@ public class ScriptGameManager : MonoBehaviour
     public Transform GetPlayerHand()
     {
         return playerHand;
+    }
+
+    public GameObject GetCurrentMap()
+    {
+        return ssm.GetParentStage().GetMiniMap();
     }
 }
