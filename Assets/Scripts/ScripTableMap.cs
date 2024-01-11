@@ -20,6 +20,7 @@ public class ScripTableMap : MonoBehaviour
         lineTmp.transform.SetParent(table);
         lineTmp.transform.localScale = Vector3.one;
         lineTmp.transform.localPosition = Vector3.zero;
+        lineTmp.transform.localEulerAngles = Vector3.zero;
         lineTmp.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = stage.ToString();
         lineTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = coin.ToString();
         lines.Add(lineTmp);
