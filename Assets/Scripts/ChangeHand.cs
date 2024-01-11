@@ -32,10 +32,15 @@ public class ChangeHand : MonoBehaviour
 
     public void OnChangeMap()
     {
-        if (!ui_active && !save_ui_active)
+        if (!save_ui_active)
         {
             ChangeMap();
         }
+    }
+
+    public ScripTableMap GetTableMap()
+    {
+        return tableMap.GetComponent<ScripTableMap>();
     }
 
     private void ChangeMap()

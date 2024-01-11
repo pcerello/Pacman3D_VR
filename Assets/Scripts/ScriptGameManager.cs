@@ -39,7 +39,7 @@ public class ScriptGameManager : MonoBehaviour
             Destroy(this );
         }
         inGame = true;
-        tableMap = FindObjectOfType<ScripTableMap>();
+        tableMap = player.GetComponent<ChangeHand>().GetTableMap();
         source = GetComponent<AudioSource>();
     }
 
