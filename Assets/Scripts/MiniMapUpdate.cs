@@ -19,7 +19,7 @@ public class MiniMapUpdate : MonoBehaviour
     private Transform stageObject;
 
     private GameObject player;
-    private GameObject[] list_ias;
+    private Dictionary<GameObject, GameObject> MapAIs = new Dictionary<GameObject, GameObject>();
     private Vector2 wh;
     private float rate;
     private int stageNum;
@@ -41,6 +41,10 @@ public class MiniMapUpdate : MonoBehaviour
         transform.SetParent(ScriptGameManager.SGM.GetPlayerHand());
         this.GetComponent<RectTransform>().localPosition = posCarte;
         player = SpawnSpriteGame(spritePlayer, ScriptGameManager.SGM.GetTransformPlayer().localPosition);
+        foreach (GameObject IA in ScriptGameManager.SGM.GetListIAsStage(stageNum))
+        {
+            MapAIs[IA] = SpawnSpriteGame(spriteGhost, IA.transform.localPosition);
+        }
         SpawnCoins();
     }
 
@@ -48,21 +52,23 @@ public class MiniMapUpdate : MonoBehaviour
     {
         
         updateTile(player, (ScriptGameManager.SGM.GetTransformPlayer().localPosition - stageObject.transform.position), stageObject.position);
-        /*
+        
         foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
         {
             GameObject AI = pair.Key;
             GameObject mapAI = pair.Value;
             if (AI != null)
             {
-                updateTile(mapAI, AI.transform.position, stageObject);
+                updateTile(mapAI, AI.transform.localPosition, stageObject.position);
             } else
             {
                 removeTile(mapAI);
             }
-        }*/
+        }
         
     }
+
+    private void removeTile(GameObject tile) { Destroy(tile); }
 
     
     private void updateTile(GameObject tile, Vector3 entityPosition, Vector3 mapPosition)
@@ -98,7 +104,7 @@ public class MiniMapUpdate : MonoBehaviour
         tile.GetComponent<Image>().sprite = game;
 
         updateTile(tile, pos, stageObject.position);
-       
+
         return tile;
     }
 
