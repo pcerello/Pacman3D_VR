@@ -13,6 +13,8 @@ public class MiniMapUpdate : MonoBehaviour
     [SerializeField] private Sprite spritePlayer;
     [SerializeField] private Sprite spriteGhost;
     [SerializeField] private Sprite spriteCoin;
+    [SerializeField] private Vector3 posCarte;
+    [SerializeField] private Vector3 rotCarte;
 
     private Transform stageObject;
 
@@ -21,30 +23,32 @@ public class MiniMapUpdate : MonoBehaviour
     private Vector2 wh;
     private float rate;
     private int stageNum;
+    
 
     private void Awake()
     {
         stageObject = this.transform.parent;
 
         RectTransform rt = GetComponent<RectTransform>();
+        rt.rotation = Quaternion.Euler(rotCarte.x, rotCarte.y, rotCarte.z);
         wh = rt.sizeDelta;
-        rate = (wh.x / 36) * rt.localScale.x;
+        rate = (wh.x / 36);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         transform.SetParent(ScriptGameManager.SGM.GetPlayerHand());
-        this.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 3);
-
+        this.GetComponent<RectTransform>().localPosition = posCarte;
+        player = SpawnSpriteGame(spritePlayer, ScriptGameManager.SGM.GetTransformPlayer().localPosition);
         SpawnCoins();
     }
 
     private void FixedUpdate()
     {
-        /**
-        updateTile(ImageObject, ScriptGameManager.SGM.GetTransformPlayer().position, stageObject);
         
+        updateTile(player, (ScriptGameManager.SGM.GetTransformPlayer().localPosition - stageObject.transform.position), stageObject.position);
+        /*
         foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
         {
             GameObject AI = pair.Key;
@@ -61,31 +65,22 @@ public class MiniMapUpdate : MonoBehaviour
     }
 
     
-    private void updateTile(GameObject tile, Vector3 playerPosition, Vector3 mapPosition)
+    private void updateTile(GameObject tile, Vector3 entityPosition, Vector3 mapPosition)
     {
 
-        Vector3 localPosition = playerPosition - mapPosition;
+        Vector3 localPosition = entityPosition;
         localPosition.y = localPosition.z;
         localPosition.z = 0;
 
-        Vector3 canvasPos = getCanvasPos();
-
-        tile.transform.position = canvasPos + rate * (localPosition / (float)tilesSize);
-    }
-
-    void removeTile(GameObject mapAI)
-    {
-        if (mapAI != null)
-        {
-            Destroy(mapAI);
-        }
+        tile.GetComponent<RectTransform>().localPosition = (localPosition/1.5f * rate - new Vector3((wh.x- rate )/ 2, (wh.y-rate)/2,0));
     }
 
     private void SpawnCoins()
     {
         foreach (var coin in ScriptGameManager.SGM.GetListCoins(stageNum))
         {
-            SpawnSpriteGame(spriteCoin, coin.transform.position);
+            GameObject o = SpawnSpriteGame(spriteCoin, coin.transform.parent.localPosition);
+            coin.GetComponent<CoinBehavior>().setMinimapCoin(o);
         }
     }
 
@@ -94,18 +89,17 @@ public class MiniMapUpdate : MonoBehaviour
         stageNum = id;
     }
 
-    private Vector3 getCanvasPos()
-    {
-        return transform.position - new Vector3((transform.localScale.x * wh.x / 2) - (rate / 2), (transform.localScale.y * wh.y / 2) - (rate / 2));
-    }
-
-    private void SpawnSpriteGame(Sprite game, Vector3 pos)
+    private GameObject SpawnSpriteGame(Sprite game, Vector3 pos)
     {
         GameObject tile = Instantiate(imageObject, Vector3.zero, Quaternion.identity, this.transform);
-        tile.GetComponent<RectTransform>().position = pos;
+        RectTransform rtransform = tile.GetComponent<RectTransform>();
+        rtransform.position = pos;
+        rtransform.localEulerAngles = Vector3.zero;
         tile.GetComponent<Image>().sprite = game;
 
-        updateTile(tile, pos, this.transform.position);
+        updateTile(tile, pos, stageObject.position);
+       
+        return tile;
     }
 
 }
