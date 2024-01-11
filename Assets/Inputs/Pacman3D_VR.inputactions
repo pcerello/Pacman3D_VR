@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ChangeMap",
+                    "type": "Button",
+                    "id": "0f094a0b-c860-423c-86b7-ffc90983f6e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "0d621921-19dd-4667-864f-43f96c0c38a8",
@@ -205,6 +214,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47c53172-4264-462b-821a-00391e59703f",
+                    "path": "<OculusTouchController>{RightHand}/primaryTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "ChangeMap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
