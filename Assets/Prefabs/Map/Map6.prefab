@@ -76048,6 +76048,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffa03bcc864a9c468620c76f54afd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imageObject: {fileID: 9004333225196837427, guid: e7961da970c1eda4fb3d9b7a6348ce3b, type: 3}
+  tilesSize: 1.5
+  spritePlayer: {fileID: 21300000, guid: e45f8f823c093d941855bb23b53b9414, type: 3}
+  spriteGhost: {fileID: 21300000, guid: 4154bfb214dbb45448dedb9e9ffadadd, type: 3}
+  spriteCoin: {fileID: 21300000, guid: eab693773c39f0444a01ec07938f9cba, type: 3}
 --- !u!1 &7054159230585285411
 GameObject:
   m_ObjectHideFlags: 0

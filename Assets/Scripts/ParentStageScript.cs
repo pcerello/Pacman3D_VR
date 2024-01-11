@@ -16,6 +16,7 @@ public class ParentStageScript : MonoBehaviour
     private List<GameObject> listGrounds;
     private List<GameObject> listIAs;
     private List<GameObject> listCoins;
+    private int id_stage;
 
     void Awake()
     {
@@ -67,6 +68,12 @@ public class ParentStageScript : MonoBehaviour
     public void UnloadStage()
     {
         stage.SetActive(false);
+    }
+
+    public void SetId(int id)
+    {
+        this.id_stage = id;
+        minimap.GetComponent<MiniMapUpdate>().SetId(id);
     }
 
     public void LoadStage()
