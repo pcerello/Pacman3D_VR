@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3893123273885967793}
   - component: {fileID: 8299100581224813386}
   - component: {fileID: 2025334630082964418}
-  - component: {fileID: 1763637164520819758}
+  - component: {fileID: 50685692048484630}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8299100581224813386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   tilesSize: 1.5
   canvas: {fileID: 6296413783399125276}
   stageObject: {fileID: 0}
+  imagePlaced: {fileID: 9004333225196837427, guid: e7961da970c1eda4fb3d9b7a6348ce3b, type: 3}
   wallSprite: {fileID: 21300000, guid: 782c2cc12efca2c4081010143c4e12ef, type: 3}
   groundSprite: {fileID: 21300000, guid: 3453f7db08fe5fd499e102a6303bc8dd, type: 3}
   playerSprite: {fileID: 21300000, guid: e45f8f823c093d941855bb23b53b9414, type: 3}
@@ -129,7 +130,7 @@ MonoBehaviour:
   coinSprite: {fileID: 21300000, guid: eab693773c39f0444a01ec07938f9cba, type: 3}
   tp1Sprite: {fileID: 21300000, guid: f8634b0caee53ba4e802e86b643e0220, type: 3}
   tp2Sprite: {fileID: 21300000, guid: f5639c7ac2dcd944ebab441c4df42fb2, type: 3}
---- !u!222 &1763637164520819758
+--- !u!222 &50685692048484630
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
