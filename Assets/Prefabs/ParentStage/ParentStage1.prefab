@@ -54,6 +54,7 @@ MonoBehaviour:
   minimap: {fileID: 7756349574862398948}
   listTPs:
   - {fileID: 4333307169649577051}
+  - {fileID: 8387551991585003064}
 --- !u!1001 &222670324870429956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +245,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 340543871513305083, guid: 62ed4cec4ea004b4b831b06316ea0e44, type: 3}
   m_PrefabInstance: {fileID: 7726451778975773103}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8387551991585003064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2260610115491227543, guid: 62ed4cec4ea004b4b831b06316ea0e44, type: 3}
+  m_PrefabInstance: {fileID: 7726451778975773103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0090eeca21bb40a46a28fe7a82f21a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8965179497391390226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1680803307849371581, guid: 62ed4cec4ea004b4b831b06316ea0e44, type: 3}
