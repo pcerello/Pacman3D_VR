@@ -10,7 +10,7 @@ public class ParentStageScript : MonoBehaviour
     [SerializeField] public int nbrCoins;
     [SerializeField] private GameObject coins;
     [SerializeField] private GameObject stage;
-    [SerializeField] private string pathCsv;
+    [SerializeField] private GameObject minimap;
     [SerializeField] private List<Elevator> listTPs = new List<Elevator>();
 
     private List<GameObject> listGrounds;
@@ -37,6 +37,7 @@ public class ParentStageScript : MonoBehaviour
         {
             SpawnCoins();
         }
+
     }
 
     private void SpawnCoins()
@@ -71,11 +72,6 @@ public class ParentStageScript : MonoBehaviour
     public void LoadStage()
     {
         stage.SetActive(true);
-    }
-
-    public string GetPathCsv()
-    {
-        return pathCsv;
     }
 
     public List<GameObject> GetListIAs()

@@ -57,19 +57,17 @@ public class ScriptGameManager : MonoBehaviour
 
 
         playerHand = playerHand.gameObject.GetComponentInChildren<Transform>(true);
-        initMaps();
     }
 
     public void initMaps()
     {
         ParentStageScript[] list = ssm.GetListParentStage();
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 12; i++)
         {
             GameObject map = Instantiate(mapPrefab);
             map.GetComponent<MapCalculator>().stageNumber = i + 1;
-            map.GetComponent<MapCalculator>().stageObject = list[i].gameObject;
             map.transform.SetParent(playerHand);
-            map.GetComponent<RectTransform>().localPosition = new Vector3(0,0,(float)2.5);
+            map.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, (float)2.5);
         }
     }
 
@@ -177,5 +175,10 @@ public class ScriptGameManager : MonoBehaviour
     public int GetNbrIAsInStage(int id)
     {
         return ssm.GetNbrIAsInStage(id);
+    }
+
+    public Transform GetPlayerHand()
+    {
+        return playerHand;
     }
 }
