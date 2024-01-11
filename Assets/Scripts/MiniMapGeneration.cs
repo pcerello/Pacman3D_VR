@@ -10,7 +10,8 @@ public class MapCalculator : MonoBehaviour
     [SerializeField] public int stageNumber;
     [SerializeField] public float tilesSize;
     [SerializeField] public Canvas canvas;
-    [SerializeField] public GameObject stageObject;
+    private GameObject stageObject;
+    [SerializeField] private GameObject imagePlaced;
     [SerializeField] public Sprite wallSprite;
     [SerializeField] public Sprite groundSprite;
     [SerializeField] public Sprite playerSprite;
@@ -32,20 +33,13 @@ public class MapCalculator : MonoBehaviour
         wh = rt.sizeDelta;
         rate = (wh.x / 36) * rt.localScale.x;
         ReadCSVFile();
-        foreach (GameObject coin in ScriptGameManager.SGM.GetListCoins(stageNumber - 1))
-        {
-            GameObject coinMinimap = makeTile("MapCoin", coin.transform.position, stageObject.transform.position);
-            coinMinimap.GetComponent<Image>().sprite = coinSprite;
-            CoinBehavior coinBehavior = coin.AddComponent<CoinBehavior>();
-            coinBehavior.setMinimapCoin(coinMinimap);
-        }
-        LocatePlayerAndAIS();
     }
 
     private void Update()
     {
+        /*
         updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, stageObject.transform.position);
-
+        
         foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
         {
             GameObject AI = pair.Key;
@@ -58,6 +52,7 @@ public class MapCalculator : MonoBehaviour
                 removeTile(mapAI);
             }
         }
+        */
     }
 
     void removeTile(GameObject mapAI)
@@ -70,7 +65,6 @@ public class MapCalculator : MonoBehaviour
 
     private Vector3 getCanvasPos()
     {
-        print("wh : "+wh);
         return canvas.transform.position - new Vector3((transform.localScale.x * wh.x / 2) - (rate/2),(transform.localScale.y*  wh.y / 2) - (rate / 2)) ;
     }
 
@@ -96,7 +90,7 @@ public class MapCalculator : MonoBehaviour
         List<string[]> csvData = new List<string[]>();
 
         // Lire le fichier CSV ligne par ligne
-        using (StreamReader reader = new StreamReader("Assets/CSV/etage"+stageNumber+".csv"))
+        using (StreamReader reader = File.OpenText(Application.dataPath + "/CSV/etage" +stageNumber+".csv"))
         {
             while (!reader.EndOfStream)
             {
@@ -125,12 +119,11 @@ public class MapCalculator : MonoBehaviour
 
         Vector3 canvasPos = getCanvasPos();
 
-        GameObject tile = new GameObject(tileName);
-        tile.AddComponent<Image>();
+        GameObject tile = Instantiate(imagePlaced, Vector3.zero, Quaternion.identity, canvas.transform);
+        tile.name = tileName;
         position.z = 0;
 
         tile.transform.position = canvasPos + rate * position;
-        tile.transform.SetParent(canvas.transform);
         tile.GetComponent<RectTransform>().sizeDelta = new Vector2(rate, rate);
 
         if (!IsTileInsideCanvas(canvas.transform.position, canvasPos + rate * position, wh))
