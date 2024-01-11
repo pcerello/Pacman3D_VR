@@ -102,4 +102,9 @@ public class ParentStageScript : MonoBehaviour
     {
         return listTPs.IndexOf(obj);
     }
+
+    public GameObject GetMiniMap()
+    {
+        return minimap;
+    }
 }
