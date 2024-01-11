@@ -38,7 +38,7 @@ public class MapCalculator : MonoBehaviour
     private void Update()
     {
         /*
-        updateTile(MapPlayer, ScriptGameManager.SGM.GetTransformPlayer().position, stageObject.transform.position);
+        updateTile(ImageObject, ScriptGameManager.SGM.GetTransformPlayer().position, stageObject.transform.position);
         
         foreach (KeyValuePair<GameObject, GameObject> pair in MapAIs) 
         {
@@ -77,7 +77,7 @@ public class MapCalculator : MonoBehaviour
             MapAIs[AIs[i]].GetComponent<Image>().sprite = ghostSprite;
         }
 
-        MapPlayer = makeTileFromCSV("MapPlayer", ScriptGameManager.SGM.GetTransformPlayer().position);
+        MapPlayer = makeTileFromCSV("ImageObject", ScriptGameManager.SGM.GetTransformPlayer().position);
         if (MapPlayer != null)
         {
             MapPlayer.GetComponent<Image>().sprite = playerSprite;
