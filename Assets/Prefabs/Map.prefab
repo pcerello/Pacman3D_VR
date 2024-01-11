@@ -118,7 +118,6 @@ MonoBehaviour:
   stageNumber: 2
   tilesSize: 1.5
   canvas: {fileID: 6296413783399125276}
-  stageObject: {fileID: 0}
   imagePlaced: {fileID: 9004333225196837427, guid: e7961da970c1eda4fb3d9b7a6348ce3b, type: 3}
   wallSprite: {fileID: 21300000, guid: 782c2cc12efca2c4081010143c4e12ef, type: 3}
   groundSprite: {fileID: 21300000, guid: 3453f7db08fe5fd499e102a6303bc8dd, type: 3}
