@@ -81255,7 +81255,7 @@ RectTransform:
   m_GameObject: {fileID: 7544377841878620384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2.5}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 374472483881821081}
@@ -82649,6 +82649,8 @@ MonoBehaviour:
   spritePlayer: {fileID: 21300000, guid: e45f8f823c093d941855bb23b53b9414, type: 3}
   spriteGhost: {fileID: 21300000, guid: 4154bfb214dbb45448dedb9e9ffadadd, type: 3}
   spriteCoin: {fileID: 21300000, guid: eab693773c39f0444a01ec07938f9cba, type: 3}
+  posCarte: {x: 0, y: 0, z: 0.3}
+  rotCarte: {x: 50, y: 0, z: 0}
 --- !u!1 &7557593665853663291
 GameObject:
   m_ObjectHideFlags: 0

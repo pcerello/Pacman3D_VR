@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScriptSceneManager : MonoBehaviour
 {
-    [SerializeField] private ParentStageScript[] listStages;
+    [SerializeField] public ParentStageScript[] listStages;
     [SerializeField] private ParentStageScript winArea;
     [SerializeField] private ParentStageScript loseArea;
     private int currentStage = 0;
