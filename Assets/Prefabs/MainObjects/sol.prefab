@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 6031149926307456101}
   - component: {fileID: 7150630601586694539}
   m_Layer: 8
-  m_Name: sol
+  m_Name: sol_e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 18
+  m_StaticEditorFlags: 19
   m_IsActive: 1
 --- !u!4 &1692080961981755492
 Transform:
@@ -120,7 +120,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 18
+  m_StaticEditorFlags: 19
   m_IsActive: 1
 --- !u!4 &8950800362167186230
 Transform:
