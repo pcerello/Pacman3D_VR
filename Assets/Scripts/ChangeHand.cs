@@ -14,13 +14,14 @@ public class ChangeHand : MonoBehaviour
     [SerializeField] private bool ui_active = true;
 
     private bool save_ui_active;
-    private int state_map = 0;
+    private int state_map = 1;
 
     private void Start()
     {
         save_ui_active = ui_active;
         ui_hand.SetActive(ui_active);
         game_hand.SetActive(!ui_active);
+        state_map = 1;
     }
 
     public void OnChange()
@@ -76,6 +77,6 @@ public class ChangeHand : MonoBehaviour
 
     public bool MapEnable()
     {
-        return state_map == 0;
+        return state_map == 1;
     }
 } 
