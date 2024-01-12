@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: ede52ff92122c544dac181408be2e9da
+  m_OcclusionCullingData: {fileID: 36300000, guid: 6586d37adb4c43f4bbd652dd17a9edbf, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -1018,6 +1018,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 392074249}
     m_Modifications:
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5530002403244403348, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1106,7 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -2111,6 +2123,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 392074249}
     m_Modifications:
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5530002403244403348, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2199,7 +2223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -6255,6 +6279,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 392074249}
     m_Modifications:
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5530002403244403348, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6343,7 +6379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -9540,6 +9576,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 392074249}
     m_Modifications:
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707965523310022133, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5530002403244403348, guid: 8d23e3a35697d804687ba7d7f0994a1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9628,7 +9676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0
@@ -10019,6 +10067,10 @@ PrefabInstance:
     - target: {fileID: 3311108329516276687, guid: 2c413c8b21a56d24298deb53c2ee0549, type: 3}
       propertyPath: m_Name
       value: tableauSpooky
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999781098597097945, guid: 2c413c8b21a56d24298deb53c2ee0549, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,6 +14,11 @@ public class ScripTableMap : MonoBehaviour
         lines = new List<GameObject>();
     }
 
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     public void CreateLine(int stage, int coin)
     {
         GameObject lineTmp = Instantiate(line);

@@ -16,6 +16,13 @@ public class ScriptSceneManager : MonoBehaviour
         for (int i = 1; i < listStages.Length; i++)
         {
             listStages[i].SetId(i);
+        }
+    }
+
+    private void Start()
+    {
+        for (int i = 1; i < listStages.Length; i++)
+        {
             listStages[i].UnloadStage();
         }
         winArea.UnloadStage();

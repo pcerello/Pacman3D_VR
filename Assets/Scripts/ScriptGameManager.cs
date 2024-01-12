@@ -54,7 +54,7 @@ public class ScriptGameManager : MonoBehaviour
             totalCoins += coins;
             tableMap.CreateLine(i, coins);
         }
-        scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
+        //scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
 
 
         playerHand = playerHand.gameObject.GetComponentInChildren<Transform>(true);

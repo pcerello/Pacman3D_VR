@@ -68,7 +68,8 @@ public class ParentStageScript : MonoBehaviour
     public void UnloadStage()
     {
         stage.SetActive(false);
-        minimap.SetActive(false);
+        if(minimap != null)
+            minimap.SetActive(false);
     }
 
     public void SetId(int id)
@@ -80,7 +81,8 @@ public class ParentStageScript : MonoBehaviour
     public void LoadStage()
     {
         stage.SetActive(true);
-        minimap.SetActive(true );
+        if(minimap != null)
+            minimap.SetActive(true );
     }
 
     public List<GameObject> GetListIAs()
