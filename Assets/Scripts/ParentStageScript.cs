@@ -82,7 +82,12 @@ public class ParentStageScript : MonoBehaviour
     {
         stage.SetActive(true);
         if(minimap != null)
-            minimap.SetActive(true );
+        {
+            if(ScriptGameManager.SGM.GetTransformPlayer().gameObject.GetComponent<ChangeHand>().MapEnable())
+                minimap.SetActive(true);
+            minimap.GetComponent<MiniMapUpdate>().SetRot();
+        }
+            
     }
 
     public List<GameObject> GetListIAs()

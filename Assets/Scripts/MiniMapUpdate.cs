@@ -30,7 +30,6 @@ public class MiniMapUpdate : MonoBehaviour
         stageObject = this.transform.parent;
 
         RectTransform rt = GetComponent<RectTransform>();
-        rt.rotation = Quaternion.Euler(rotCarte.x, rotCarte.y, rotCarte.z);
         wh = rt.sizeDelta;
         rate = (wh.x / 36);
     }
@@ -39,6 +38,7 @@ public class MiniMapUpdate : MonoBehaviour
     void Start()
     {
         transform.SetParent(ScriptGameManager.SGM.GetPlayerHand());
+        SetRot();
         this.GetComponent<RectTransform>().localPosition = posCarte;
         player = SpawnSpriteGame(spritePlayer, ScriptGameManager.SGM.GetTransformPlayer().localPosition);
         foreach (GameObject IA in ScriptGameManager.SGM.GetListIAsStage(stageNum))
@@ -108,4 +108,8 @@ public class MiniMapUpdate : MonoBehaviour
         return tile;
     }
 
+    public void SetRot()
+    {
+        this.GetComponent<RectTransform>().localEulerAngles = rotCarte;
+    }
 }

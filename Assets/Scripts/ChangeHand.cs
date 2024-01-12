@@ -73,4 +73,9 @@ public class ChangeHand : MonoBehaviour
             state_map = 0;
         }
     }
+
+    public bool MapEnable()
+    {
+        return state_map == 0;
+    }
 } 

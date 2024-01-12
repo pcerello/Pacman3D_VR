@@ -84,14 +84,24 @@ public class ScriptGameManager : MonoBehaviour
         ssm.GetParentStage().RemoveCoin(coin);
 
         coin.GetComponent<CoinBehavior>().DestroyCoin();
-        scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
+        //scoreText.text = "Score : " + points.ToString() + " / " + totalCoins.ToString();
         
         tableMap.SetValue(ssm.GetCurrentStage(), ssm.GetParentStage().GetNbrCoins());
 
-        if(points == totalCoins)
+        if(NbrCoinGame() == 0)
         {
             Win();
         }
+    }
+
+    private int NbrCoinGame()
+    {
+        int res = 0;
+        for(int i=0; i < ssm.GetListParentStage().Length ; i++)
+        {
+            res += ssm.GetNbrCoinsInStage(i);
+        }
+        return res;
     }
 
     public void Win()
